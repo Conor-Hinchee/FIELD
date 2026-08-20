@@ -11,12 +11,14 @@ class FieldView extends WatchUi.WatchFace {
 
     // components
     private var mChapterRing;         // minute track + hour indices
+    private var mBattery;             // battery sub-dial (12 o'clock)
     private var mPinion;              // cannon pinion (center boss + pin)
     private var mHands;               // hour / minute / seconds hands
 
     function initialize() {
         WatchFace.initialize();
         mChapterRing = new ChapterRing();
+        mBattery     = new BatteryDial();
         mPinion      = new CannonPinion();
         mHands       = new Hands();
     }
@@ -32,6 +34,7 @@ class FieldView extends WatchUi.WatchFace {
         if (dc has :setAntiAlias) { dc.setAntiAlias(true); }
 
         mChapterRing.draw(dc, mCx, mCy);
+        mBattery.draw(dc, mCx, mCy);
         // mHands.draw(dc, mCx, mCy, mLowPower);   // hands paused — center focus
         mPinion.draw(dc, mCx, mCy);
     }
