@@ -1,0 +1,4 @@
+bin/
+*.der
+developer_key
+.DS_Store
