@@ -13,6 +13,8 @@ class FieldView extends WatchUi.WatchFace {
     private var mChapterRing;         // minute track + hour indices
     private var mBattery;             // battery sub-dial (12 o'clock)
     private var mWeather;             // weather sub-dial (2–3 o'clock)
+    private var mDate;                // date sub-dial (9–10 o'clock)
+    private var mSun;                 // sunrise / sunset (6 o'clock, no circle)
     private var mPinion;              // cannon pinion (center boss + pin)
     private var mHands;               // hour / minute / seconds hands
 
@@ -21,6 +23,8 @@ class FieldView extends WatchUi.WatchFace {
         mChapterRing = new ChapterRing();
         mBattery     = new BatteryDial();
         mWeather     = new WeatherDial();
+        mDate        = new DateDial();
+        mSun         = new SunTimes();
         mPinion      = new CannonPinion();
         mHands       = new Hands();
     }
@@ -38,6 +42,8 @@ class FieldView extends WatchUi.WatchFace {
         mChapterRing.draw(dc, mCx, mCy);
         mBattery.draw(dc, mCx, mCy);
         mWeather.draw(dc, mCx, mCy);
+        mDate.draw(dc, mCx, mCy);
+        mSun.draw(dc, mCx, mCy);
         // mHands.draw(dc, mCx, mCy, mLowPower);   // hands paused — center focus
         mPinion.draw(dc, mCx, mCy);
     }

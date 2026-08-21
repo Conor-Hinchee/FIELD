@@ -49,20 +49,26 @@ class WeatherDial {
         }
 
         // condition icon
-        drawIcon(dc, wcx, wcy - 13, cond);
+        drawIcon(dc, wcx, wcy - 30, cond);
 
-        // current temperature
+        // current temperature (near center)
         dc.setColor(Palette.PRIMARY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(wcx, wcy + 5, vfont(dc, (dc.getFontHeight(Graphics.FONT_XTINY) * 11) / 15),
+        dc.drawText(wcx, wcy + 2, vfont(dc, (dc.getFontHeight(Graphics.FONT_XTINY) * 11) / 15),
                     (tempF != null) ? tempF.toString() + "°" : "--°",
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
-        // day hi / lo
-        var lohi = ((loF != null) ? loF.toString() : "--") + "° / "
-                 + ((hiF != null) ? hiF.toString() : "--") + "°";
+        // day lo / hi, monochrome, with wide spacing around the separator
+        var loStr = (loF != null) ? loF.toString() + "°" : "--°";
+        var hiStr = (hiF != null) ? hiF.toString() + "°" : "--°";
+        var hf    = vfont(dc, dc.getFontHeight(Graphics.FONT_XTINY) / 2);
+        var y2    = wcy + 30;   // hi/lo toward the bottom, clear of the temp
         dc.setColor(Palette.TERTIARY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(wcx, wcy + 21, vfont(dc, (dc.getFontHeight(Graphics.FONT_XTINY) * 11) / 20),
-                    lohi, Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.drawText(wcx - 6, y2, hf, loStr,
+                    Graphics.TEXT_JUSTIFY_RIGHT | Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.drawText(wcx, y2, hf, "/",
+                    Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.drawText(wcx + 6, y2, hf, hiStr,
+                    Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
     }
 
     // ---- condition icon: pick a drawn glyph from the Weather condition ----
