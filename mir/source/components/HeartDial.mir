@@ -1,0 +1,824 @@
+[ @file = "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Graphics,1,14,22]; ]
+import Toybox.Graphics;
+[ @file = "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [Lang,2,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [System,3,14,20]; ]
+import Toybox.System;
+[ @file = "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [Activity,4,14,22]; ]
+import Toybox.Activity;
+[ @file = "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc"; @line = 5; @symbol_importdef<0> = [Toybox,5,7,13]; @symbol_importdef<1> = [ActivityMonitor,5,14,29]; ]
+import Toybox.ActivityMonitor;
+[ @file = "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc"; @line = 9; @symbol_classdef = [HeartDial,9,6,15]; ]
+class HeartDial {
+    [ @file = "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc"; @line = 9; ]
+    <init> {
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 11 10 ]
+        %tmp.1 = 7.5;
+        %tmp.2 = 12.0;
+        %tmp.3 = div %tmp.1 %tmp.2;
+        putv self :POS_FRAC %tmp.3;
+    }
+    [ @file = "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc"; @line = 9; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc"; @line = 11; @position = 10; @symbol_constdef = [POS_FRAC,11,10,18]; ]
+    const POS_FRAC;
+    [ @file = "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc"; @line = 12; @position = 10; @symbol_constdef = [POS_R,12,10,15]; ]
+    const POS_R = 110;
+    [ @file = "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc"; @line = 13; @position = 10; @symbol_constdef = [DIAL_R,13,10,16]; ]
+    const DIAL_R = 40;
+    [ @file = "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc"; @line = 14; @position = 10; @symbol_constdef = [RIM,14,10,13]; ]
+    const RIM = 3;
+    [ @file = "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc"; @line = 16; @symbol_functiondef = [draw,16,13,17]; @symbol_param<0> = [dc,16,18,20]; @symbol_param<1> = [cx,16,22,24]; @symbol_param<2> = [cy,16,26,28]; ]
+    function draw(dc, cx, cy) {
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_16_30_54_4_start:
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 17 8 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_16_30_54_4_start" "_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_16_30_54_4_stop" ]
+        %p.1 = local;
+        symbol [ p %p.1 17 12 13 ];
+        symbol [ Geometry %tmp.2 17 18 26 ];
+        %tmp.2 = getv ? :Geometry;
+        symbol [ polar %tmp.3 17 27 32 ];
+        %tmp.3 = getv function %tmp.2 :polar;
+        %tmp.4 = lgetv %cx;
+        symbol [ cx %tmp.4 17 33 35 ];
+        %tmp.5 = lgetv %cy;
+        symbol [ cy %tmp.5 17 37 39 ];
+        symbol [ POS_R %tmp.7 17 41 46 ];
+        %tmp.7 = getv ? :POS_R;
+        symbol [ POS_FRAC %tmp.9 17 48 56 ];
+        %tmp.9 = getv ? :POS_FRAC;
+        %tmp.10 = invoke %tmp.2 %tmp.3(%tmp.4, %tmp.5, %tmp.7, %tmp.9);
+        lputv %p.1 %tmp.10;
+        symbol [ p %p.1 17 12 13 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 18 8 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_16_30_54_4_start" "_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_16_30_54_4_stop" ]
+        %hcx.2 = local;
+        symbol [ hcx %hcx.2 18 12 15 ];
+        %tmp.11 = lgetv %p.1;
+        symbol [ p %tmp.11 18 18 19 ];
+        %tmp.12 = 0;
+        %tmp.13 = agetv %tmp.11 %tmp.12;
+        lputv %hcx.2 %tmp.13;
+        symbol [ hcx %hcx.2 18 12 15 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 19 8 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_16_30_54_4_start" "_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_16_30_54_4_stop" ]
+        %hcy.3 = local;
+        symbol [ hcy %hcy.3 19 12 15 ];
+        %tmp.14 = lgetv %p.1;
+        symbol [ p %tmp.14 19 18 19 ];
+        %tmp.15 = 1;
+        %tmp.16 = agetv %tmp.14 %tmp.15;
+        lputv %hcy.3 %tmp.16;
+        symbol [ hcy %hcy.3 19 12 15 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 22 8 ]
+        %tmp.17 = lgetv %dc;
+        symbol [ dc %tmp.17 22 8 10 ];
+        symbol [ setColor %tmp.18 22 11 19 ];
+        %tmp.18 = getv function %tmp.17 :setColor;
+        %tmp.19 = 0x484848;
+        symbol [ Graphics %tmp.20 22 30 38 ];
+        %tmp.20 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.21 22 39 56 ];
+        %tmp.21 = getv %tmp.20 :COLOR_TRANSPARENT;
+        invoke %tmp.17 %tmp.18(%tmp.19, %tmp.21);
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 23 8 ]
+        %tmp.22 = lgetv %dc;
+        symbol [ dc %tmp.22 23 8 10 ];
+        symbol [ fillCircle %tmp.23 23 11 21 ];
+        %tmp.23 = getv function %tmp.22 :fillCircle;
+        %tmp.24 = lgetv %hcx.2;
+        symbol [ hcx %tmp.24 23 22 25 ];
+        %tmp.25 = lgetv %hcy.3;
+        symbol [ hcy %tmp.25 23 27 30 ];
+        symbol [ DIAL_R %tmp.27 23 32 38 ];
+        %tmp.27 = getv ? :DIAL_R;
+        invoke %tmp.22 %tmp.23(%tmp.24, %tmp.25, %tmp.27);
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 26 8 ]
+        %tmp.28 = lgetv %dc;
+        symbol [ dc %tmp.28 26 8 10 ];
+        symbol [ setPenWidth %tmp.29 26 11 22 ];
+        %tmp.29 = getv function %tmp.28 :setPenWidth;
+        symbol [ RIM %tmp.31 26 23 26 ];
+        %tmp.31 = getv ? :RIM;
+        invoke %tmp.28 %tmp.29(%tmp.31);
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 27 8 ]
+        %tmp.32 = lgetv %dc;
+        symbol [ dc %tmp.32 27 8 10 ];
+        symbol [ setColor %tmp.33 27 11 19 ];
+        %tmp.33 = getv function %tmp.32 :setColor;
+        %tmp.34 = 0x707070;
+        symbol [ Graphics %tmp.35 27 30 38 ];
+        %tmp.35 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.36 27 39 56 ];
+        %tmp.36 = getv %tmp.35 :COLOR_TRANSPARENT;
+        invoke %tmp.32 %tmp.33(%tmp.34, %tmp.36);
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 28 8 ]
+        %tmp.37 = lgetv %dc;
+        symbol [ dc %tmp.37 28 8 10 ];
+        symbol [ drawArc %tmp.38 28 11 18 ];
+        %tmp.38 = getv function %tmp.37 :drawArc;
+        %tmp.39 = lgetv %hcx.2;
+        symbol [ hcx %tmp.39 28 19 22 ];
+        %tmp.40 = lgetv %hcy.3;
+        symbol [ hcy %tmp.40 28 24 27 ];
+        symbol [ DIAL_R %tmp.42 28 29 35 ];
+        %tmp.42 = getv ? :DIAL_R;
+        %tmp.43 = 2;
+        %tmp.44 = sub %tmp.42 %tmp.43;
+        symbol [ Graphics %tmp.45 28 41 49 ];
+        %tmp.45 = getm $.Toybox.Graphics;
+        symbol [ ARC_COUNTER_CLOCKWISE %tmp.46 28 50 71 ];
+        %tmp.46 = getv %tmp.45 :ARC_COUNTER_CLOCKWISE;
+        %tmp.47 = 35;
+        %tmp.48 = 145;
+        invoke %tmp.37 %tmp.38(%tmp.39, %tmp.40, %tmp.44, %tmp.46, %tmp.47, %tmp.48);
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 29 8 ]
+        %tmp.49 = lgetv %dc;
+        symbol [ dc %tmp.49 29 8 10 ];
+        symbol [ setColor %tmp.50 29 11 19 ];
+        %tmp.50 = getv function %tmp.49 :setColor;
+        %tmp.51 = 0x282828;
+        symbol [ Graphics %tmp.52 29 30 38 ];
+        %tmp.52 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.53 29 39 56 ];
+        %tmp.53 = getv %tmp.52 :COLOR_TRANSPARENT;
+        invoke %tmp.49 %tmp.50(%tmp.51, %tmp.53);
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 30 8 ]
+        %tmp.54 = lgetv %dc;
+        symbol [ dc %tmp.54 30 8 10 ];
+        symbol [ drawArc %tmp.55 30 11 18 ];
+        %tmp.55 = getv function %tmp.54 :drawArc;
+        %tmp.56 = lgetv %hcx.2;
+        symbol [ hcx %tmp.56 30 19 22 ];
+        %tmp.57 = lgetv %hcy.3;
+        symbol [ hcy %tmp.57 30 24 27 ];
+        symbol [ DIAL_R %tmp.59 30 29 35 ];
+        %tmp.59 = getv ? :DIAL_R;
+        %tmp.60 = 2;
+        %tmp.61 = sub %tmp.59 %tmp.60;
+        symbol [ Graphics %tmp.62 30 41 49 ];
+        %tmp.62 = getm $.Toybox.Graphics;
+        symbol [ ARC_COUNTER_CLOCKWISE %tmp.63 30 50 71 ];
+        %tmp.63 = getv %tmp.62 :ARC_COUNTER_CLOCKWISE;
+        %tmp.64 = 215;
+        %tmp.65 = 325;
+        invoke %tmp.54 %tmp.55(%tmp.56, %tmp.57, %tmp.61, %tmp.63, %tmp.64, %tmp.65);
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 33 8 ]
+        %tmp.66 = lgetv %dc;
+        symbol [ dc %tmp.66 33 8 10 ];
+        symbol [ setColor %tmp.67 33 11 19 ];
+        %tmp.67 = getv function %tmp.66 :setColor;
+        %tmp.68 = 0x000000;
+        symbol [ Graphics %tmp.69 33 30 38 ];
+        %tmp.69 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.70 33 39 56 ];
+        %tmp.70 = getv %tmp.69 :COLOR_TRANSPARENT;
+        invoke %tmp.66 %tmp.67(%tmp.68, %tmp.70);
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 34 8 ]
+        %tmp.71 = lgetv %dc;
+        symbol [ dc %tmp.71 34 8 10 ];
+        symbol [ fillCircle %tmp.72 34 11 21 ];
+        %tmp.72 = getv function %tmp.71 :fillCircle;
+        %tmp.73 = lgetv %hcx.2;
+        symbol [ hcx %tmp.73 34 22 25 ];
+        %tmp.74 = lgetv %hcy.3;
+        symbol [ hcy %tmp.74 34 27 30 ];
+        symbol [ DIAL_R %tmp.76 34 32 38 ];
+        %tmp.76 = getv ? :DIAL_R;
+        symbol [ RIM %tmp.78 34 41 44 ];
+        %tmp.78 = getv ? :RIM;
+        %tmp.79 = sub %tmp.76 %tmp.78;
+        invoke %tmp.71 %tmp.72(%tmp.73, %tmp.74, %tmp.79);
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 37 8 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_16_30_54_4_start" "_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_16_30_54_4_stop" ]
+        %hr.4 = local;
+        symbol [ hr %hr.4 37 12 14 ];
+        %tmp.80 = self;
+        symbol [ currentHeartRate %tmp.81 37 20 36 ];
+        %tmp.81 = getv function %tmp.80 :currentHeartRate;
+        %tmp.82 = invoke %tmp.80 %tmp.81();
+        lputv %hr.4 %tmp.82;
+        symbol [ hr %hr.4 37 12 14 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 38 8 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_16_30_54_4_start" "_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_16_30_54_4_stop" ]
+        %hrStr.5 = local;
+        symbol [ hrStr %hrStr.5 38 12 17 ];
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_38_20_38_51_begin:
+        %tmp.83 = lgetv %hr.4;
+        symbol [ hr %tmp.83 38 21 23 ];
+        %tmp.84 = null;
+        %tmp.85 = ne %tmp.83 %tmp.84;
+        bf %tmp.85 @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_38_20_38_51_else_false;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_38_20_38_51_true:
+        %tmp.86 = lgetv %hr.4;
+        symbol [ hr %tmp.86 38 35 37 ];
+        %tmp.87 = as %tmp.86 { (!Null) };
+        symbol [ toString %tmp.88 38 38 46 ];
+        %tmp.88 = getv function %tmp.87 :toString;
+        %tmp.89 = invoke %tmp.87 %tmp.88();
+        push %tmp.89;
+        goto @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_38_20_38_51_end;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_38_20_38_51_else_false:
+        %tmp.90 = "--";
+        push %tmp.90;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_38_20_38_51_end:
+        %tmp.91 = phi [%tmp.85 @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_38_20_38_51_begin] [%tmp.89 @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_38_20_38_51_true] [%tmp.90 @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_38_20_38_51_else_false] [%tmp.91 @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_38_20_38_51_end];
+        lputv %hrStr.5 %tmp.91;
+        symbol [ hrStr %hrStr.5 38 12 17 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 42 8 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_16_30_54_4_start" "_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_16_30_54_4_stop" ]
+        %pulse.6 = local;
+        symbol [ pulse %pulse.6 42 12 17 ];
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_42_20_42_68_begin:
+        symbol [ System %tmp.92 42 22 28 ];
+        %tmp.92 = getm $.Toybox.System;
+        symbol [ getClockTime %tmp.93 42 29 41 ];
+        %tmp.93 = getv function %tmp.92 :getClockTime;
+        %tmp.94 = invoke %tmp.92 %tmp.93();
+        symbol [ sec %tmp.95 42 44 47 ];
+        %tmp.95 = getv %tmp.94 :sec;
+        %tmp.96 = 3;
+        %tmp.97 = mod %tmp.95 %tmp.96;
+        %tmp.98 = 0;
+        %tmp.99 = eq %tmp.97 %tmp.98;
+        bf %tmp.99 @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_42_20_42_68_else_false;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_42_20_42_68_true:
+        %tmp.100 = 12.5;
+        push %tmp.100;
+        goto @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_42_20_42_68_end;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_42_20_42_68_else_false:
+        %tmp.101 = 12.0;
+        push %tmp.101;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_42_20_42_68_end:
+        %tmp.102 = phi [%tmp.99 @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_42_20_42_68_begin] [%tmp.100 @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_42_20_42_68_true] [%tmp.101 @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_42_20_42_68_else_false] [%tmp.102 @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_42_20_42_68_end];
+        lputv %pulse.6 %tmp.102;
+        symbol [ pulse %pulse.6 42 12 17 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 43 8 ]
+        %tmp.103 = self;
+        symbol [ drawHeart %tmp.104 43 8 17 ];
+        %tmp.104 = getv function %tmp.103 :drawHeart;
+        %tmp.105 = lgetv %dc;
+        symbol [ dc %tmp.105 43 18 20 ];
+        %tmp.106 = lgetv %hcx.2;
+        symbol [ hcx %tmp.106 43 22 25 ];
+        %tmp.107 = lgetv %hcy.3;
+        symbol [ hcy %tmp.107 43 27 30 ];
+        %tmp.108 = 14;
+        %tmp.109 = sub %tmp.107 %tmp.108;
+        %tmp.110 = lgetv %pulse.6;
+        symbol [ pulse %tmp.110 43 37 42 ];
+        symbol [ Palette %tmp.112 43 44 51 ];
+        %tmp.112 = getv ? :Palette;
+        symbol [ ACCENT %tmp.113 43 52 58 ];
+        %tmp.113 = getv %tmp.112 :ACCENT;
+        invoke %tmp.103 %tmp.104(%tmp.105, %tmp.106, %tmp.109, %tmp.110, %tmp.113);
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 46 8 ]
+        %tmp.114 = lgetv %dc;
+        symbol [ dc %tmp.114 46 8 10 ];
+        symbol [ setColor %tmp.115 46 11 19 ];
+        %tmp.115 = getv function %tmp.114 :setColor;
+        symbol [ Palette %tmp.117 46 20 27 ];
+        %tmp.117 = getv ? :Palette;
+        symbol [ PRIMARY %tmp.118 46 28 35 ];
+        %tmp.118 = getv %tmp.117 :PRIMARY;
+        symbol [ Graphics %tmp.119 46 37 45 ];
+        %tmp.119 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.120 46 46 63 ];
+        %tmp.120 = getv %tmp.119 :COLOR_TRANSPARENT;
+        invoke %tmp.114 %tmp.115(%tmp.118, %tmp.120);
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 47 8 ]
+        %tmp.121 = lgetv %dc;
+        symbol [ dc %tmp.121 47 8 10 ];
+        symbol [ drawText %tmp.122 47 11 19 ];
+        %tmp.122 = getv function %tmp.121 :drawText;
+        %tmp.123 = lgetv %hcx.2;
+        symbol [ hcx %tmp.123 47 20 23 ];
+        %tmp.124 = lgetv %hcy.3;
+        symbol [ hcy %tmp.124 47 25 28 ];
+        %tmp.125 = 4;
+        %tmp.126 = add %tmp.124 %tmp.125;
+        %tmp.127 = self;
+        symbol [ vfont %tmp.128 47 34 39 ];
+        %tmp.128 = getv function %tmp.127 :vfont;
+        %tmp.129 = lgetv %dc;
+        symbol [ dc %tmp.129 47 40 42 ];
+        %tmp.130 = lgetv %dc;
+        symbol [ dc %tmp.130 47 45 47 ];
+        symbol [ getFontHeight %tmp.131 47 48 61 ];
+        %tmp.131 = getv function %tmp.130 :getFontHeight;
+        symbol [ Graphics %tmp.132 47 62 70 ];
+        %tmp.132 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.133 47 71 81 ];
+        %tmp.133 = getv %tmp.132 :FONT_XTINY;
+        %tmp.134 = invoke %tmp.130 %tmp.131(%tmp.133);
+        %tmp.135 = 11;
+        %tmp.136 = mul %tmp.134 %tmp.135;
+        %tmp.137 = 20;
+        %tmp.138 = div %tmp.136 %tmp.137;
+        %tmp.139 = invoke %tmp.127 %tmp.128(%tmp.129, %tmp.138);
+        %tmp.140 = lgetv %hrStr.5;
+        symbol [ hrStr %tmp.140 48 20 25 ];
+        symbol [ Graphics %tmp.141 48 27 35 ];
+        %tmp.141 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.142 48 36 55 ];
+        %tmp.142 = getv %tmp.141 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.143 48 58 66 ];
+        %tmp.143 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.144 48 67 87 ];
+        %tmp.144 = getv %tmp.143 :TEXT_JUSTIFY_VCENTER;
+        %tmp.145 = bitor %tmp.142 %tmp.144;
+        invoke %tmp.121 %tmp.122(%tmp.123, %tmp.126, %tmp.139, %tmp.140, %tmp.145);
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 51 8 ]
+        %tmp.146 = lgetv %dc;
+        symbol [ dc %tmp.146 51 8 10 ];
+        symbol [ setColor %tmp.147 51 11 19 ];
+        %tmp.147 = getv function %tmp.146 :setColor;
+        symbol [ Palette %tmp.149 51 20 27 ];
+        %tmp.149 = getv ? :Palette;
+        symbol [ TERTIARY %tmp.150 51 28 36 ];
+        %tmp.150 = getv %tmp.149 :TERTIARY;
+        symbol [ Graphics %tmp.151 51 38 46 ];
+        %tmp.151 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.152 51 47 64 ];
+        %tmp.152 = getv %tmp.151 :COLOR_TRANSPARENT;
+        invoke %tmp.146 %tmp.147(%tmp.150, %tmp.152);
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 52 8 ]
+        %tmp.153 = lgetv %dc;
+        symbol [ dc %tmp.153 52 8 10 ];
+        symbol [ drawText %tmp.154 52 11 19 ];
+        %tmp.154 = getv function %tmp.153 :drawText;
+        %tmp.155 = lgetv %hcx.2;
+        symbol [ hcx %tmp.155 52 20 23 ];
+        %tmp.156 = lgetv %hcy.3;
+        symbol [ hcy %tmp.156 52 25 28 ];
+        %tmp.157 = 19;
+        %tmp.158 = add %tmp.156 %tmp.157;
+        %tmp.159 = self;
+        symbol [ vfont %tmp.160 52 35 40 ];
+        %tmp.160 = getv function %tmp.159 :vfont;
+        %tmp.161 = lgetv %dc;
+        symbol [ dc %tmp.161 52 41 43 ];
+        %tmp.162 = lgetv %dc;
+        symbol [ dc %tmp.162 52 46 48 ];
+        symbol [ getFontHeight %tmp.163 52 49 62 ];
+        %tmp.163 = getv function %tmp.162 :getFontHeight;
+        symbol [ Graphics %tmp.164 52 63 71 ];
+        %tmp.164 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.165 52 72 82 ];
+        %tmp.165 = getv %tmp.164 :FONT_XTINY;
+        %tmp.166 = invoke %tmp.162 %tmp.163(%tmp.165);
+        %tmp.167 = 3;
+        %tmp.168 = mul %tmp.166 %tmp.167;
+        %tmp.169 = 8;
+        %tmp.170 = div %tmp.168 %tmp.169;
+        %tmp.171 = invoke %tmp.159 %tmp.160(%tmp.161, %tmp.170);
+        %tmp.172 = "BPM";
+        symbol [ Graphics %tmp.173 53 27 35 ];
+        %tmp.173 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.174 53 36 55 ];
+        %tmp.174 = getv %tmp.173 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.175 53 58 66 ];
+        %tmp.175 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.176 53 67 87 ];
+        %tmp.176 = getv %tmp.175 :TEXT_JUSTIFY_VCENTER;
+        %tmp.177 = bitor %tmp.174 %tmp.176;
+        invoke %tmp.153 %tmp.154(%tmp.155, %tmp.158, %tmp.171, %tmp.172, %tmp.177);
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_16_30_54_4_stop:
+    }
+    [ @file = "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc"; @line = 59; @symbol_functiondef = [drawHeart,59,21,30]; @symbol_param<0> = [dc,59,31,33]; @symbol_param<1> = [cx,59,35,37]; @symbol_param<2> = [cy,59,39,41]; @symbol_param<3> = [s,59,43,44]; @symbol_param<4> = [color,59,46,51]; ]
+    private
+    function drawHeart(dc, cx, cy, s, color) {
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_59_53_70_4_start:
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 60 8 ]
+        %tmp.1 = lgetv %dc;
+        symbol [ dc %tmp.1 60 8 10 ];
+        symbol [ setColor %tmp.2 60 11 19 ];
+        %tmp.2 = getv function %tmp.1 :setColor;
+        %tmp.3 = lgetv %color;
+        symbol [ color %tmp.3 60 20 25 ];
+        symbol [ Graphics %tmp.4 60 27 35 ];
+        %tmp.4 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.5 60 36 53 ];
+        %tmp.5 = getv %tmp.4 :COLOR_TRANSPARENT;
+        invoke %tmp.1 %tmp.2(%tmp.3, %tmp.5);
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 61 8 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_59_53_70_4_start" "_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_59_53_70_4_stop" ]
+        %lobe.1 = local;
+        symbol [ lobe %lobe.1 61 12 16 ];
+        %tmp.6 = lgetv %s;
+        symbol [ s %tmp.6 61 19 20 ];
+        %tmp.7 = 0.31;
+        %tmp.8 = mul %tmp.6 %tmp.7;
+        lputv %lobe.1 %tmp.8;
+        symbol [ lobe %lobe.1 61 12 16 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 62 8 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_59_53_70_4_start" "_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_59_53_70_4_stop" ]
+        %ly.2 = local;
+        symbol [ ly %ly.2 62 12 14 ];
+        %tmp.9 = lgetv %cy;
+        symbol [ cy %tmp.9 62 19 21 ];
+        %tmp.10 = lgetv %s;
+        symbol [ s %tmp.10 62 24 25 ];
+        %tmp.11 = 0.14;
+        %tmp.12 = mul %tmp.10 %tmp.11;
+        %tmp.13 = sub %tmp.9 %tmp.12;
+        lputv %ly.2 %tmp.13;
+        symbol [ ly %ly.2 62 12 14 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 63 8 ]
+        %tmp.14 = lgetv %dc;
+        symbol [ dc %tmp.14 63 8 10 ];
+        symbol [ fillCircle %tmp.15 63 11 21 ];
+        %tmp.15 = getv function %tmp.14 :fillCircle;
+        %tmp.16 = lgetv %cx;
+        symbol [ cx %tmp.16 63 22 24 ];
+        %tmp.17 = lgetv %s;
+        symbol [ s %tmp.17 63 27 28 ];
+        %tmp.18 = 0.28;
+        %tmp.19 = mul %tmp.17 %tmp.18;
+        %tmp.20 = sub %tmp.16 %tmp.19;
+        %tmp.21 = lgetv %ly.2;
+        symbol [ ly %tmp.21 63 37 39 ];
+        %tmp.22 = lgetv %lobe.1;
+        symbol [ lobe %tmp.22 63 41 45 ];
+        invoke %tmp.14 %tmp.15(%tmp.20, %tmp.21, %tmp.22);
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 64 8 ]
+        %tmp.23 = lgetv %dc;
+        symbol [ dc %tmp.23 64 8 10 ];
+        symbol [ fillCircle %tmp.24 64 11 21 ];
+        %tmp.24 = getv function %tmp.23 :fillCircle;
+        %tmp.25 = lgetv %cx;
+        symbol [ cx %tmp.25 64 22 24 ];
+        %tmp.26 = lgetv %s;
+        symbol [ s %tmp.26 64 27 28 ];
+        %tmp.27 = 0.28;
+        %tmp.28 = mul %tmp.26 %tmp.27;
+        %tmp.29 = add %tmp.25 %tmp.28;
+        %tmp.30 = lgetv %ly.2;
+        symbol [ ly %tmp.30 64 37 39 ];
+        %tmp.31 = lgetv %lobe.1;
+        symbol [ lobe %tmp.31 64 41 45 ];
+        invoke %tmp.23 %tmp.24(%tmp.29, %tmp.30, %tmp.31);
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 65 8 ]
+        %tmp.32 = lgetv %dc;
+        symbol [ dc %tmp.32 65 8 10 ];
+        symbol [ fillPolygon %tmp.33 65 11 22 ];
+        %tmp.33 = getv function %tmp.32 :fillPolygon;
+        %tmp.34 = newa 3;
+        %tmp.35 = newa 2;
+        %tmp.36 = lgetv %cx;
+        symbol [ cx %tmp.36 66 14 16 ];
+        %tmp.37 = lgetv %s;
+        symbol [ s %tmp.37 66 19 20 ];
+        %tmp.38 = 0.58;
+        %tmp.39 = mul %tmp.37 %tmp.38;
+        %tmp.40 = sub %tmp.36 %tmp.39;
+        %tmp.41 = dup %tmp.35;
+        %tmp.42 = aputv %tmp.41 0 %tmp.40;
+        %tmp.43 = lgetv %cy;
+        symbol [ cy %tmp.43 66 29 31 ];
+        %tmp.44 = lgetv %s;
+        symbol [ s %tmp.44 66 34 35 ];
+        %tmp.45 = 0.11;
+        %tmp.46 = mul %tmp.44 %tmp.45;
+        %tmp.47 = sub %tmp.43 %tmp.46;
+        %tmp.48 = dup %tmp.42;
+        %tmp.49 = aputv %tmp.48 1 %tmp.47;
+        %tmp.50 = dup %tmp.34;
+        %tmp.51 = aputv %tmp.50 0 %tmp.49;
+        %tmp.52 = newa 2;
+        %tmp.53 = lgetv %cx;
+        symbol [ cx %tmp.53 67 14 16 ];
+        %tmp.54 = lgetv %s;
+        symbol [ s %tmp.54 67 19 20 ];
+        %tmp.55 = 0.58;
+        %tmp.56 = mul %tmp.54 %tmp.55;
+        %tmp.57 = add %tmp.53 %tmp.56;
+        %tmp.58 = dup %tmp.52;
+        %tmp.59 = aputv %tmp.58 0 %tmp.57;
+        %tmp.60 = lgetv %cy;
+        symbol [ cy %tmp.60 67 29 31 ];
+        %tmp.61 = lgetv %s;
+        symbol [ s %tmp.61 67 34 35 ];
+        %tmp.62 = 0.11;
+        %tmp.63 = mul %tmp.61 %tmp.62;
+        %tmp.64 = sub %tmp.60 %tmp.63;
+        %tmp.65 = dup %tmp.59;
+        %tmp.66 = aputv %tmp.65 1 %tmp.64;
+        %tmp.67 = dup %tmp.51;
+        %tmp.68 = aputv %tmp.67 1 %tmp.66;
+        %tmp.69 = newa 2;
+        %tmp.70 = lgetv %cx;
+        symbol [ cx %tmp.70 68 14 16 ];
+        %tmp.71 = dup %tmp.69;
+        %tmp.72 = aputv %tmp.71 0 %tmp.70;
+        %tmp.73 = lgetv %cy;
+        symbol [ cy %tmp.73 68 29 31 ];
+        %tmp.74 = lgetv %s;
+        symbol [ s %tmp.74 68 34 35 ];
+        %tmp.75 = 0.85;
+        %tmp.76 = mul %tmp.74 %tmp.75;
+        %tmp.77 = add %tmp.73 %tmp.76;
+        %tmp.78 = dup %tmp.72;
+        %tmp.79 = aputv %tmp.78 1 %tmp.77;
+        %tmp.80 = dup %tmp.68;
+        %tmp.81 = aputv %tmp.80 2 %tmp.79;
+        invoke %tmp.32 %tmp.33(%tmp.81);
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_59_53_70_4_stop:
+    }
+    [ @file = "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc"; @line = 72; @symbol_functiondef = [currentHeartRate,72,21,37]; ]
+    private
+    function currentHeartRate() {
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_72_40_92_4_start:
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 75 8 ]
+        try @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_75_8_90_8_beginTry @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_75_8_90_8_endTry @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_75_8_90_8_catch @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_75_8_90_8_finally;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_75_8_90_8_beginTry:
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_75_12_88_8_start:
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 76 12 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_75_12_88_8_start" "_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_75_12_88_8_stop" ]
+        %act.1 = local;
+        symbol [ act %act.1 76 16 19 ];
+        symbol [ Activity %tmp.1 76 22 30 ];
+        %tmp.1 = getm $.Toybox.Activity;
+        symbol [ getActivityInfo %tmp.2 76 31 46 ];
+        %tmp.2 = getv function %tmp.1 :getActivityInfo;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %act.1 %tmp.3;
+        symbol [ act %act.1 76 16 19 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 77 12 ]
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_77_12_79_12_if_stmt:
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_77_16_77_55_begin:
+        %tmp.4 = lgetv %act.1;
+        symbol [ act %tmp.4 77 16 19 ];
+        %tmp.5 = null;
+        %tmp.6 = ne %tmp.4 %tmp.5;
+        bf %tmp.6 @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_77_12_79_12_if_end;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_77_31_77_55_true:
+        %tmp.7 = lgetv %act.1;
+        symbol [ act %tmp.7 77 31 34 ];
+        %tmp.8 = as %tmp.7 { (!Null) };
+        symbol [ currentHeartRate %tmp.9 77 35 51 ];
+        %tmp.9 = getv %tmp.8 :currentHeartRate;
+        %tmp.10 = null;
+        %tmp.11 = ne %tmp.9 %tmp.10;
+        push %tmp.11;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_77_31_77_55_end:
+        %tmp.12 = phi [%tmp.6 @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_77_16_77_55_begin] [%tmp.11 @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_77_31_77_55_true] [%tmp.12 @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_77_31_77_55_end];
+        bf %tmp.12 @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_77_12_79_12_if_end;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_77_12_79_12_if_true:
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_77_61_79_12_start:
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 78 16 ]
+        %tmp.13 = lgetv %act.1;
+        symbol [ act %tmp.13 78 23 26 ];
+        %tmp.14 = as %tmp.13 { (!Null) };
+        symbol [ currentHeartRate %tmp.15 78 27 43 ];
+        %tmp.15 = getv %tmp.14 :currentHeartRate;
+        jsr @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_75_8_90_8_finally;
+        ret %tmp.15;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_77_61_79_12_stop:
+        goto @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_77_12_79_12_if_end;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_77_12_79_12_if_end:
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 80 12 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_75_12_88_8_start" "_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_75_12_88_8_stop" ]
+        %iter.2 = local;
+        symbol [ iter %iter.2 80 16 20 ];
+        symbol [ ActivityMonitor %tmp.16 80 23 38 ];
+        %tmp.16 = getm $.Toybox.ActivityMonitor;
+        symbol [ getHeartRateHistory %tmp.17 80 39 58 ];
+        %tmp.17 = getv function %tmp.16 :getHeartRateHistory;
+        %tmp.18 = 1;
+        %tmp.19 = true;
+        %tmp.20 = invoke %tmp.16 %tmp.17(%tmp.18, %tmp.19);
+        lputv %iter.2 %tmp.20;
+        symbol [ iter %iter.2 80 16 20 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 81 12 ]
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_81_12_87_12_if_stmt:
+        %tmp.21 = lgetv %iter.2;
+        symbol [ iter %tmp.21 81 16 20 ];
+        %tmp.22 = null;
+        %tmp.23 = ne %tmp.21 %tmp.22;
+        bf %tmp.23 @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_81_12_87_12_if_end;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_81_12_87_12_if_true:
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_81_30_87_12_start:
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 82 16 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_81_30_87_12_start" "_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_81_30_87_12_stop" ]
+        %s.3 = local;
+        symbol [ s %s.3 82 20 21 ];
+        %tmp.24 = lgetv %iter.2;
+        symbol [ iter %tmp.24 82 24 28 ];
+        %tmp.25 = as %tmp.24 { (!Null) };
+        symbol [ next %tmp.26 82 29 33 ];
+        %tmp.26 = getv function %tmp.25 :next;
+        %tmp.27 = invoke %tmp.25 %tmp.26();
+        lputv %s.3 %tmp.27;
+        symbol [ s %s.3 82 20 21 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 83 16 ]
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_83_16_86_16_if_stmt:
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_83_20_84_58_begin:
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_83_20_83_48_begin:
+        %tmp.28 = lgetv %s.3;
+        symbol [ s %tmp.28 83 20 21 ];
+        %tmp.29 = null;
+        %tmp.30 = ne %tmp.28 %tmp.29;
+        bf %tmp.30 @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_83_16_86_16_if_end;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_83_33_83_48_true:
+        %tmp.31 = lgetv %s.3;
+        symbol [ s %tmp.31 83 33 34 ];
+        %tmp.32 = as %tmp.31 { (!Null) };
+        symbol [ heartRate %tmp.33 83 35 44 ];
+        %tmp.33 = getv %tmp.32 :heartRate;
+        %tmp.34 = null;
+        %tmp.35 = ne %tmp.33 %tmp.34;
+        push %tmp.35;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_83_33_83_48_end:
+        %tmp.36 = phi [%tmp.30 @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_83_20_83_48_begin] [%tmp.35 @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_83_33_83_48_true] [%tmp.36 @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_83_33_83_48_end];
+        bf %tmp.36 @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_83_16_86_16_if_end;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_84_27_84_58_true:
+        %tmp.37 = lgetv %s.3;
+        symbol [ s %tmp.37 84 27 28 ];
+        %tmp.38 = as %tmp.37 { (!Null) };
+        symbol [ heartRate %tmp.39 84 29 38 ];
+        %tmp.39 = getv %tmp.38 :heartRate;
+        symbol [ ActivityMonitor %tmp.40 84 42 57 ];
+        %tmp.40 = getm $.Toybox.ActivityMonitor;
+        symbol [ INVALID_HR_SAMPLE %tmp.41 84 58 75 ];
+        %tmp.41 = getv %tmp.40 :INVALID_HR_SAMPLE;
+        %tmp.42 = ne %tmp.39 %tmp.41;
+        push %tmp.42;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_84_27_84_58_end:
+        %tmp.43 = phi [%tmp.36 @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_83_20_84_58_begin] [%tmp.42 @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_84_27_84_58_true] [%tmp.43 @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_84_27_84_58_end];
+        bf %tmp.43 @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_83_16_86_16_if_end;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_83_16_86_16_if_true:
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_84_77_86_16_start:
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 85 20 ]
+        %tmp.44 = lgetv %s.3;
+        symbol [ s %tmp.44 85 27 28 ];
+        %tmp.45 = as %tmp.44 { (!Null) };
+        symbol [ heartRate %tmp.46 85 29 38 ];
+        %tmp.46 = getv %tmp.45 :heartRate;
+        jsr @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_75_8_90_8_finally;
+        ret %tmp.46;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_84_77_86_16_stop:
+        goto @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_83_16_86_16_if_end;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_83_16_86_16_if_end:
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_81_30_87_12_stop:
+        goto @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_81_12_87_12_if_end;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_81_12_87_12_if_end:
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_75_12_88_8_stop:
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_75_8_90_8_endTry:
+        jsr @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_75_8_90_8_finally;
+        goto @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_75_8_90_8_end;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_75_8_90_8_catch:
+        %tmp.47 = exception;
+        push %tmp.47;
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 88 10 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_75_8_90_8_catch" "_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_88_10_90_8_end" ]
+        %ex.4 = local;
+        symbol [ ex %ex.4 88 17 19 ];
+        %tmp.48 = dup %tmp.47;
+        lputv %ex.4 %tmp.48;
+        symbol [ ex %ex.4 88 17 19 ];
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_88_21_90_8_start:
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 89 12 ]
+        pop;
+        %tmp.49 = null;
+        jsr @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_75_8_90_8_finally;
+        ret %tmp.49;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_88_21_90_8_stop:
+        jsr @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_75_8_90_8_finally;
+        pop;
+        goto @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_75_8_90_8_end;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_88_10_90_8_end:
+        try @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_75_8_90_8_catch @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_88_10_90_8_end @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_88_10_90_8_end @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_75_8_90_8_finally;
+        jsr @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_75_8_90_8_finally;
+        throw %tmp.47;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_75_8_90_8_finally:
+        jsrret;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_75_8_90_8_end:
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 91 8 ]
+        %tmp.50 = null;
+        ret %tmp.50;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_72_40_92_4_stop:
+    }
+    [ @file = "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc"; @line = 94; @symbol_functiondef = [vfont,94,21,26]; @symbol_param<0> = [dc,94,27,29]; @symbol_param<1> = [size,94,31,35]; ]
+    private
+    function vfont(dc, size) {
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_94_37_103_4_start:
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 95 8 ]
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_95_8_101_8_if_stmt:
+        symbol [ Graphics %tmp.1 95 12 20 ];
+        %tmp.1 = getm $.Toybox.Graphics;
+        %tmp.3 = const :getVectorFont;
+        symbol [ getVectorFont %tmp.3 95 26 39 const ];
+        %tmp.4 = canhazplz %tmp.1 %tmp.3;
+        bf %tmp.4 @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_95_8_101_8_if_end;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_95_8_101_8_if_true:
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_95_41_101_8_start:
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 96 12 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_95_41_101_8_start" "_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_95_41_101_8_stop" ]
+        %faces.1 = local;
+        symbol [ faces %faces.1 96 16 21 ];
+        %tmp.5 = newa 3;
+        %tmp.6 = "RobotoCondensedBold";
+        %tmp.7 = dup %tmp.5;
+        %tmp.8 = aputv %tmp.7 0 %tmp.6;
+        %tmp.9 = "RobotoRegular";
+        %tmp.10 = dup %tmp.8;
+        %tmp.11 = aputv %tmp.10 1 %tmp.9;
+        %tmp.12 = "RobotoCondensedRegular";
+        %tmp.13 = dup %tmp.11;
+        %tmp.14 = aputv %tmp.13 2 %tmp.12;
+        lputv %faces.1 %tmp.14;
+        symbol [ faces %faces.1 96 16 21 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 97 12 ]
+        for @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_97_12_100_12_for_test @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_97_12_100_12_for_incr @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_97_12_100_12_for_end;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_97_12_100_12_for_init:
+        [ "_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_97_12_100_12_for_begin" "_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_97_12_100_12_for_end" ]
+        %i.2 = local;
+        symbol [ i %i.2 97 21 22 ];
+        %tmp.15 = 0;
+        lputv %i.2 %tmp.15;
+        symbol [ i %i.2 97 21 22 ];
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_97_12_100_12_for_test:
+        %tmp.16 = lgetv %i.2;
+        symbol [ i %tmp.16 97 28 29 ];
+        %tmp.17 = lgetv %faces.1;
+        symbol [ faces %tmp.17 97 32 37 ];
+        symbol [ size %tmp.18 97 38 42 ];
+        %tmp.18 = getv function %tmp.17 :size;
+        %tmp.19 = invoke %tmp.17 %tmp.18();
+        %tmp.20 = lt %tmp.16 %tmp.19;
+        bf %tmp.20 @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_97_12_100_12_for_end;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_97_12_100_12_for_begin:
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_97_54_100_12_start:
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 98 16 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_97_54_100_12_start" "_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_97_54_100_12_stop" ]
+        %vf.3 = local;
+        symbol [ vf %vf.3 98 20 22 ];
+        symbol [ Graphics %tmp.21 98 25 33 ];
+        %tmp.21 = getm $.Toybox.Graphics;
+        symbol [ getVectorFont %tmp.22 98 34 47 ];
+        %tmp.22 = getv function %tmp.21 :getVectorFont;
+        %tmp.23 = newd 2;
+        %tmp.25 = const :face;
+        symbol [ face %tmp.25 98 50 54 const ];
+        %tmp.26 = lgetv %faces.1;
+        symbol [ faces %tmp.26 98 58 63 ];
+        %tmp.27 = lgetv %i.2;
+        symbol [ i %tmp.27 98 64 65 ];
+        %tmp.28 = agetv %tmp.26 %tmp.27;
+        %tmp.29 = dup %tmp.23;
+        %tmp.30 = aputv %tmp.29 %tmp.25 %tmp.28;
+        %tmp.32 = const :size;
+        symbol [ size %tmp.32 98 69 73 const ];
+        %tmp.33 = lgetv %size;
+        symbol [ size %tmp.33 98 77 81 ];
+        %tmp.34 = dup %tmp.30;
+        %tmp.35 = aputv %tmp.34 %tmp.32 %tmp.33;
+        %tmp.36 = invoke %tmp.21 %tmp.22(%tmp.35);
+        lputv %vf.3 %tmp.36;
+        symbol [ vf %vf.3 98 20 22 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 99 16 ]
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_99_16_99_45_if_stmt:
+        %tmp.37 = lgetv %vf.3;
+        symbol [ vf %tmp.37 99 20 22 ];
+        %tmp.38 = null;
+        %tmp.39 = ne %tmp.37 %tmp.38;
+        bf %tmp.39 @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_99_16_99_45_if_end;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_99_16_99_45_if_true:
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_99_32_99_45_start:
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 99 34 ]
+        %tmp.40 = lgetv %vf.3;
+        symbol [ vf %tmp.40 99 41 43 ];
+        %tmp.41 = as %tmp.40 { (!Null) };
+        ret %tmp.41;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_99_32_99_45_stop:
+        goto @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_99_16_99_45_if_end;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_99_16_99_45_if_end:
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_97_54_100_12_stop:
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_97_12_100_12_for_incr:
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 97 ]
+        %tmp.42 = lgetv %i.2;
+        symbol [ i %tmp.42 97 46 47 ];
+        %tmp.43 = 1;
+        %tmp.44 = add %tmp.42 %tmp.43;
+        lputv %i.2 %tmp.44;
+        symbol [ i %i.2 97 46 47 ];
+        goto @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_97_12_100_12_for_test;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_97_12_100_12_for_end:
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_95_41_101_8_stop:
+        goto @_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_95_8_101_8_if_end;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_95_8_101_8_if_end:
+[ "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc" 102 8 ]
+        symbol [ Graphics %tmp.45 102 15 23 ];
+        %tmp.45 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.46 102 24 34 ];
+        %tmp.46 = getv %tmp.45 :FONT_XTINY;
+        ret %tmp.46;
+_Users_moarwaffles_dev_FIELD_source_components_HeartDial_mc_94_37_103_4_stop:
+    }
+}
+[ @file = "/Users/moarwaffles/dev/FIELD/source/components/HeartDial.mc"; @line = 1; ]
+<init> {
+}

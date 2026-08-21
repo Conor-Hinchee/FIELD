@@ -1,0 +1,71 @@
+[ @file = "/Users/moarwaffles/dev/FIELD/source/Geometry.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Math,1,14,18]; ]
+import Toybox.Math;
+[ @file = "/Users/moarwaffles/dev/FIELD/source/Geometry.mc"; @line = 5; @symbol_moduledef = [Geometry,5,7,15]; ]
+module Geometry {
+    [ @file = "/Users/moarwaffles/dev/FIELD/source/Geometry.mc"; @line = 5; ]
+    <init> {
+    }
+    [ @file = "/Users/moarwaffles/dev/FIELD/source/Geometry.mc"; @line = 10; @symbol_functiondef = [polar,10,13,18]; @symbol_param<0> = [cx,10,19,21]; @symbol_param<1> = [cy,10,23,25]; @symbol_param<2> = [radius,10,27,33]; @symbol_param<3> = [fraction,10,35,43]; ]
+    function polar(cx, cy, radius, fraction) {
+_Users_moarwaffles_dev_FIELD_source_Geometry_mc_10_45_14_4_start:
+[ "/Users/moarwaffles/dev/FIELD/source/Geometry.mc" 11 8 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_Geometry_mc_10_45_14_4_start" "_Users_moarwaffles_dev_FIELD_source_Geometry_mc_10_45_14_4_stop" ]
+        %theta.1 = local;
+        symbol [ theta %theta.1 11 12 17 ];
+        %tmp.1 = lgetv %fraction;
+        symbol [ fraction %tmp.1 11 21 29 ];
+        %tmp.2 = 2.0;
+        %tmp.3 = mul %tmp.1 %tmp.2;
+        symbol [ Math %tmp.4 11 38 42 ];
+        %tmp.4 = getm $.Toybox.Math;
+        symbol [ PI %tmp.5 11 43 45 ];
+        %tmp.5 = getv %tmp.4 :PI;
+        %tmp.6 = mul %tmp.3 %tmp.5;
+        symbol [ Math %tmp.7 11 50 54 ];
+        %tmp.7 = getm $.Toybox.Math;
+        symbol [ PI %tmp.8 11 55 57 ];
+        %tmp.8 = getv %tmp.7 :PI;
+        %tmp.9 = 2.0;
+        %tmp.10 = div %tmp.8 %tmp.9;
+        %tmp.11 = sub %tmp.6 %tmp.10;
+        lputv %theta.1 %tmp.11;
+        symbol [ theta %theta.1 11 12 17 ];
+[ "/Users/moarwaffles/dev/FIELD/source/Geometry.mc" 12 8 ]
+        %tmp.12 = newa 2;
+        %tmp.13 = lgetv %cx;
+        symbol [ cx %tmp.13 12 17 19 ];
+        %tmp.14 = lgetv %radius;
+        symbol [ radius %tmp.14 12 22 28 ];
+        symbol [ Math %tmp.15 12 31 35 ];
+        %tmp.15 = getm $.Toybox.Math;
+        symbol [ cos %tmp.16 12 36 39 ];
+        %tmp.16 = getv function %tmp.15 :cos;
+        %tmp.17 = lgetv %theta.1;
+        symbol [ theta %tmp.17 12 40 45 ];
+        %tmp.18 = invoke %tmp.15 %tmp.16(%tmp.17);
+        %tmp.19 = mul %tmp.14 %tmp.18;
+        %tmp.20 = add %tmp.13 %tmp.19;
+        %tmp.21 = dup %tmp.12;
+        %tmp.22 = aputv %tmp.21 0 %tmp.20;
+        %tmp.23 = lgetv %cy;
+        symbol [ cy %tmp.23 13 17 19 ];
+        %tmp.24 = lgetv %radius;
+        symbol [ radius %tmp.24 13 22 28 ];
+        symbol [ Math %tmp.25 13 31 35 ];
+        %tmp.25 = getm $.Toybox.Math;
+        symbol [ sin %tmp.26 13 36 39 ];
+        %tmp.26 = getv function %tmp.25 :sin;
+        %tmp.27 = lgetv %theta.1;
+        symbol [ theta %tmp.27 13 40 45 ];
+        %tmp.28 = invoke %tmp.25 %tmp.26(%tmp.27);
+        %tmp.29 = mul %tmp.24 %tmp.28;
+        %tmp.30 = add %tmp.23 %tmp.29;
+        %tmp.31 = dup %tmp.22;
+        %tmp.32 = aputv %tmp.31 1 %tmp.30;
+        ret %tmp.32;
+_Users_moarwaffles_dev_FIELD_source_Geometry_mc_10_45_14_4_stop:
+    }
+}
+[ @file = "/Users/moarwaffles/dev/FIELD/source/Geometry.mc"; @line = 1; ]
+<init> {
+}

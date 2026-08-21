@@ -35,9 +35,38 @@ class SunTimes {
             set  = computeSun(false, loc[0], loc[1], tz, n);
         }
 
+        // section heading: a sun-behind-cloud, sitting ~2px above the rows.
+        // riseY is the sunrise row center; its glyph reaches ~9px above that,
+        // and the heading's cloud bottom lands ~2px above that.
+        drawHeadingIcon(dc, cx, riseY - 23);
+
         var font = vfont(dc, (dc.getFontHeight(Graphics.FONT_XTINY) * 3) / 5);
         drawRow(dc, cx, riseY, true,  fmt(rise), font);
         drawRow(dc, cx, setY,  false, fmt(set),  font);
+    }
+
+    // heading glyph: a sun peeking behind an outlined cloud (~15% smaller
+    // than the plain sun it replaced).
+    // heading glyph: a sun rising over an ocean horizon — a sun dome on a wide
+    // horizon line, with a little water shimmer below.
+    private function drawHeadingIcon(dc, hx, hy) {
+        dc.setColor(Palette.PRIMARY, Graphics.COLOR_TRANSPARENT);
+        dc.setPenWidth(2);
+
+        // sun dome above the horizon
+        dc.drawArc(hx, hy, 7, Graphics.ARC_COUNTER_CLOCKWISE, 0, 180);
+
+        // a few rays above the dome
+        dc.drawLine(hx,     hy - 11, hx,      hy - 14);
+        dc.drawLine(hx - 9, hy - 8,  hx - 11, hy - 10);
+        dc.drawLine(hx + 9, hy - 8,  hx + 11, hy - 10);
+
+        // horizon line (wide ocean surface)
+        dc.drawLine(hx - 18, hy, hx + 18, hy);
+
+        // shimmer / reflection on the water
+        dc.drawLine(hx - 5, hy + 4, hx + 5, hy + 4);
+        dc.drawLine(hx - 3, hy + 7, hx + 3, hy + 7);
     }
 
     // one row: sun-on-horizon glyph + time, centered as a pair
@@ -49,10 +78,14 @@ class SunTimes {
     }
 
     private function drawSunGlyph(dc, cx, cy, up) {
-        dc.setColor(Palette.TERTIARY, Graphics.COLOR_TRANSPARENT);
+        dc.setColor(Palette.PRIMARY, Graphics.COLOR_TRANSPARENT);
         dc.setPenWidth(2);
         dc.drawLine(cx - 8, cy + 4, cx + 8, cy + 4);                 // horizon
         dc.drawArc(cx, cy + 4, 5, Graphics.ARC_COUNTER_CLOCKWISE, 15, 165); // dome
+        // little rays over the sun
+        dc.drawLine(cx,     cy - 3, cx,     cy - 6);
+        dc.drawLine(cx - 5, cy - 1, cx - 7, cy - 3);
+        dc.drawLine(cx + 5, cy - 1, cx + 7, cy - 3);
         // small direction arrow to the left
         if (up) {
             dc.drawLine(cx - 12, cy + 3, cx - 12, cy - 3);

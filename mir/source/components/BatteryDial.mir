@@ -1,0 +1,1040 @@
+[ @file = "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Graphics,1,14,22]; ]
+import Toybox.Graphics;
+[ @file = "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc"; @line = 2; @symbol_importdef<0> = [Toybox,2,7,13]; @symbol_importdef<1> = [System,2,14,20]; ]
+import Toybox.System;
+[ @file = "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc"; @line = 3; @symbol_importdef<0> = [Toybox,3,7,13]; @symbol_importdef<1> = [Lang,3,14,18]; ]
+import Toybox.Lang;
+[ @file = "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc"; @line = 4; @symbol_importdef<0> = [Toybox,4,7,13]; @symbol_importdef<1> = [Math,4,14,18]; ]
+import Toybox.Math;
+[ @file = "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc"; @line = 11; @symbol_classdef = [BatteryDial,11,6,17]; ]
+class BatteryDial {
+    [ @file = "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc"; @line = 11; ]
+    <init> {
+    }
+    [ @file = "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc"; @line = 11; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc"; @line = 13; @position = 10; @symbol_constdef = [IDX_INNER,13,10,19]; ]
+    const IDX_INNER = 50;
+    [ @file = "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc"; @line = 14; @position = 10; @symbol_constdef = [GAP,14,10,13]; ]
+    const GAP = 15;
+    [ @file = "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc"; @line = 15; @position = 10; @symbol_constdef = [DIAL_R,15,10,16]; ]
+    const DIAL_R = 54;
+    [ @file = "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc"; @line = 16; @position = 10; @symbol_constdef = [RIM,16,10,13]; ]
+    const RIM = 4;
+    [ @file = "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc"; @line = 19; @position = 10; @symbol_constdef = [SEG_N,19,10,15]; ]
+    const SEG_N = 30;
+    [ @file = "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc"; @line = 20; @position = 10; @symbol_constdef = [SEG_LEN,20,10,17]; ]
+    const SEG_LEN = 8;
+    [ @file = "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc"; @line = 21; @position = 10; @symbol_constdef = [SEG_HW,21,10,16]; ]
+    const SEG_HW = 2;
+    [ @file = "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc"; @line = 22; @position = 10; @symbol_constdef = [SEG_DOT,22,10,17]; ]
+    const SEG_DOT = 2;
+    [ @file = "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc"; @line = 23; @position = 10; @symbol_constdef = [SEG_OFF,23,10,17]; ]
+    const SEG_OFF = 2;
+    [ @file = "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc"; @line = 25; @symbol_functiondef = [draw,25,13,17]; @symbol_param<0> = [dc,25,18,20]; @symbol_param<1> = [cx,25,22,24]; @symbol_param<2> = [cy,25,26,28]; ]
+    function draw(dc, cx, cy) {
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_25_30_81_4_start:
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 26 8 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_25_30_81_4_start" "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_25_30_81_4_stop" ]
+        %topRadius.1 = local;
+        symbol [ topRadius %topRadius.1 26 12 21 ];
+        %tmp.1 = lgetv %cx;
+        symbol [ cx %tmp.1 26 24 26 ];
+        symbol [ IDX_INNER %tmp.3 26 29 38 ];
+        %tmp.3 = getv ? :IDX_INNER;
+        %tmp.4 = sub %tmp.1 %tmp.3;
+        symbol [ GAP %tmp.6 26 41 44 ];
+        %tmp.6 = getv ? :GAP;
+        %tmp.7 = sub %tmp.4 %tmp.6;
+        lputv %topRadius.1 %tmp.7;
+        symbol [ topRadius %topRadius.1 26 12 21 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 27 8 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_25_30_81_4_start" "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_25_30_81_4_stop" ]
+        %subCx.2 = local;
+        symbol [ subCx %subCx.2 27 12 17 ];
+        %tmp.8 = lgetv %cx;
+        symbol [ cx %tmp.8 27 24 26 ];
+        lputv %subCx.2 %tmp.8;
+        symbol [ subCx %subCx.2 27 12 17 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 28 8 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_25_30_81_4_start" "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_25_30_81_4_stop" ]
+        %subCy.3 = local;
+        symbol [ subCy %subCy.3 28 12 17 ];
+        %tmp.9 = lgetv %cy;
+        symbol [ cy %tmp.9 28 24 26 ];
+        %tmp.10 = lgetv %topRadius.1;
+        symbol [ topRadius %tmp.10 28 30 39 ];
+        symbol [ DIAL_R %tmp.12 28 42 48 ];
+        %tmp.12 = getv ? :DIAL_R;
+        %tmp.13 = sub %tmp.10 %tmp.12;
+        %tmp.14 = sub %tmp.9 %tmp.13;
+        lputv %subCy.3 %tmp.14;
+        symbol [ subCy %subCy.3 28 12 17 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 31 8 ]
+        %tmp.15 = lgetv %dc;
+        symbol [ dc %tmp.15 31 8 10 ];
+        symbol [ setColor %tmp.16 31 11 19 ];
+        %tmp.16 = getv function %tmp.15 :setColor;
+        %tmp.17 = 0x484848;
+        symbol [ Graphics %tmp.18 31 30 38 ];
+        %tmp.18 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.19 31 39 56 ];
+        %tmp.19 = getv %tmp.18 :COLOR_TRANSPARENT;
+        invoke %tmp.15 %tmp.16(%tmp.17, %tmp.19);
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 32 8 ]
+        %tmp.20 = lgetv %dc;
+        symbol [ dc %tmp.20 32 8 10 ];
+        symbol [ fillCircle %tmp.21 32 11 21 ];
+        %tmp.21 = getv function %tmp.20 :fillCircle;
+        %tmp.22 = lgetv %subCx.2;
+        symbol [ subCx %tmp.22 32 22 27 ];
+        %tmp.23 = lgetv %subCy.3;
+        symbol [ subCy %tmp.23 32 29 34 ];
+        symbol [ DIAL_R %tmp.25 32 36 42 ];
+        %tmp.25 = getv ? :DIAL_R;
+        invoke %tmp.20 %tmp.21(%tmp.22, %tmp.23, %tmp.25);
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 35 8 ]
+        %tmp.26 = lgetv %dc;
+        symbol [ dc %tmp.26 35 8 10 ];
+        symbol [ setPenWidth %tmp.27 35 11 22 ];
+        %tmp.27 = getv function %tmp.26 :setPenWidth;
+        symbol [ RIM %tmp.29 35 23 26 ];
+        %tmp.29 = getv ? :RIM;
+        invoke %tmp.26 %tmp.27(%tmp.29);
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 36 8 ]
+        %tmp.30 = lgetv %dc;
+        symbol [ dc %tmp.30 36 8 10 ];
+        symbol [ setColor %tmp.31 36 11 19 ];
+        %tmp.31 = getv function %tmp.30 :setColor;
+        %tmp.32 = 0x707070;
+        symbol [ Graphics %tmp.33 36 30 38 ];
+        %tmp.33 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.34 36 39 56 ];
+        %tmp.34 = getv %tmp.33 :COLOR_TRANSPARENT;
+        invoke %tmp.30 %tmp.31(%tmp.32, %tmp.34);
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 37 8 ]
+        %tmp.35 = lgetv %dc;
+        symbol [ dc %tmp.35 37 8 10 ];
+        symbol [ drawArc %tmp.36 37 11 18 ];
+        %tmp.36 = getv function %tmp.35 :drawArc;
+        %tmp.37 = lgetv %subCx.2;
+        symbol [ subCx %tmp.37 37 19 24 ];
+        %tmp.38 = lgetv %subCy.3;
+        symbol [ subCy %tmp.38 37 26 31 ];
+        symbol [ DIAL_R %tmp.40 37 33 39 ];
+        %tmp.40 = getv ? :DIAL_R;
+        %tmp.41 = 2;
+        %tmp.42 = sub %tmp.40 %tmp.41;
+        symbol [ Graphics %tmp.43 37 45 53 ];
+        %tmp.43 = getm $.Toybox.Graphics;
+        symbol [ ARC_COUNTER_CLOCKWISE %tmp.44 37 54 75 ];
+        %tmp.44 = getv %tmp.43 :ARC_COUNTER_CLOCKWISE;
+        %tmp.45 = 35;
+        %tmp.46 = 145;
+        invoke %tmp.35 %tmp.36(%tmp.37, %tmp.38, %tmp.42, %tmp.44, %tmp.45, %tmp.46);
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 38 8 ]
+        %tmp.47 = lgetv %dc;
+        symbol [ dc %tmp.47 38 8 10 ];
+        symbol [ setColor %tmp.48 38 11 19 ];
+        %tmp.48 = getv function %tmp.47 :setColor;
+        %tmp.49 = 0x282828;
+        symbol [ Graphics %tmp.50 38 30 38 ];
+        %tmp.50 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.51 38 39 56 ];
+        %tmp.51 = getv %tmp.50 :COLOR_TRANSPARENT;
+        invoke %tmp.47 %tmp.48(%tmp.49, %tmp.51);
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 39 8 ]
+        %tmp.52 = lgetv %dc;
+        symbol [ dc %tmp.52 39 8 10 ];
+        symbol [ drawArc %tmp.53 39 11 18 ];
+        %tmp.53 = getv function %tmp.52 :drawArc;
+        %tmp.54 = lgetv %subCx.2;
+        symbol [ subCx %tmp.54 39 19 24 ];
+        %tmp.55 = lgetv %subCy.3;
+        symbol [ subCy %tmp.55 39 26 31 ];
+        symbol [ DIAL_R %tmp.57 39 33 39 ];
+        %tmp.57 = getv ? :DIAL_R;
+        %tmp.58 = 2;
+        %tmp.59 = sub %tmp.57 %tmp.58;
+        symbol [ Graphics %tmp.60 39 45 53 ];
+        %tmp.60 = getm $.Toybox.Graphics;
+        symbol [ ARC_COUNTER_CLOCKWISE %tmp.61 39 54 75 ];
+        %tmp.61 = getv %tmp.60 :ARC_COUNTER_CLOCKWISE;
+        %tmp.62 = 215;
+        %tmp.63 = 325;
+        invoke %tmp.52 %tmp.53(%tmp.54, %tmp.55, %tmp.59, %tmp.61, %tmp.62, %tmp.63);
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 42 8 ]
+        %tmp.64 = lgetv %dc;
+        symbol [ dc %tmp.64 42 8 10 ];
+        symbol [ setColor %tmp.65 42 11 19 ];
+        %tmp.65 = getv function %tmp.64 :setColor;
+        %tmp.66 = 0x000000;
+        symbol [ Graphics %tmp.67 42 30 38 ];
+        %tmp.67 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.68 42 39 56 ];
+        %tmp.68 = getv %tmp.67 :COLOR_TRANSPARENT;
+        invoke %tmp.64 %tmp.65(%tmp.66, %tmp.68);
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 43 8 ]
+        %tmp.69 = lgetv %dc;
+        symbol [ dc %tmp.69 43 8 10 ];
+        symbol [ fillCircle %tmp.70 43 11 21 ];
+        %tmp.70 = getv function %tmp.69 :fillCircle;
+        %tmp.71 = lgetv %subCx.2;
+        symbol [ subCx %tmp.71 43 22 27 ];
+        %tmp.72 = lgetv %subCy.3;
+        symbol [ subCy %tmp.72 43 29 34 ];
+        symbol [ DIAL_R %tmp.74 43 36 42 ];
+        %tmp.74 = getv ? :DIAL_R;
+        symbol [ RIM %tmp.76 43 45 48 ];
+        %tmp.76 = getv ? :RIM;
+        %tmp.77 = sub %tmp.74 %tmp.76;
+        invoke %tmp.69 %tmp.70(%tmp.71, %tmp.72, %tmp.77);
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 46 8 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_25_30_81_4_start" "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_25_30_81_4_stop" ]
+        %pct.4 = local;
+        symbol [ pct %pct.4 46 12 15 ];
+        symbol [ System %tmp.78 46 18 24 ];
+        %tmp.78 = getm $.Toybox.System;
+        symbol [ getSystemStats %tmp.79 46 25 39 ];
+        %tmp.79 = getv function %tmp.78 :getSystemStats;
+        %tmp.80 = invoke %tmp.78 %tmp.79();
+        symbol [ battery %tmp.81 46 42 49 ];
+        %tmp.81 = getv %tmp.80 :battery;
+        symbol [ toNumber %tmp.82 46 50 58 ];
+        %tmp.82 = getv function %tmp.81 :toNumber;
+        %tmp.83 = invoke %tmp.81 %tmp.82();
+        lputv %pct.4 %tmp.83;
+        symbol [ pct %pct.4 46 12 15 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 47 8 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_25_30_81_4_start" "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_25_30_81_4_stop" ]
+        %col.5 = local;
+        symbol [ col %col.5 47 12 15 ];
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_47_18_47_57_begin:
+        %tmp.84 = lgetv %pct.4;
+        symbol [ pct %tmp.84 47 19 22 ];
+        %tmp.85 = 15;
+        %tmp.86 = lte %tmp.84 %tmp.85;
+        bf %tmp.86 @_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_47_18_47_57_else_false;
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_47_18_47_57_true:
+        symbol [ Palette %tmp.88 47 32 39 ];
+        %tmp.88 = getv ? :Palette;
+        symbol [ ACCENT %tmp.89 47 40 46 ];
+        %tmp.89 = getv %tmp.88 :ACCENT;
+        push %tmp.89;
+        goto @_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_47_18_47_57_end;
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_47_18_47_57_else_false:
+        symbol [ Palette %tmp.91 47 49 56 ];
+        %tmp.91 = getv ? :Palette;
+        symbol [ PRIMARY %tmp.92 47 57 64 ];
+        %tmp.92 = getv %tmp.91 :PRIMARY;
+        push %tmp.92;
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_47_18_47_57_end:
+        %tmp.93 = phi [%tmp.86 @_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_47_18_47_57_begin] [%tmp.89 @_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_47_18_47_57_true] [%tmp.92 @_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_47_18_47_57_else_false] [%tmp.93 @_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_47_18_47_57_end];
+        lputv %col.5 %tmp.93;
+        symbol [ col %col.5 47 12 15 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 51 8 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_25_30_81_4_start" "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_25_30_81_4_stop" ]
+        %segOut.6 = local;
+        symbol [ segOut %segOut.6 51 12 18 ];
+        symbol [ DIAL_R %tmp.95 51 21 27 ];
+        %tmp.95 = getv ? :DIAL_R;
+        symbol [ RIM %tmp.97 51 30 33 ];
+        %tmp.97 = getv ? :RIM;
+        %tmp.98 = sub %tmp.95 %tmp.97;
+        symbol [ SEG_OFF %tmp.100 51 36 43 ];
+        %tmp.100 = getv ? :SEG_OFF;
+        %tmp.101 = sub %tmp.98 %tmp.100;
+        lputv %segOut.6 %tmp.101;
+        symbol [ segOut %segOut.6 51 12 18 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 52 8 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_25_30_81_4_start" "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_25_30_81_4_stop" ]
+        %filled.7 = local;
+        symbol [ filled %filled.7 52 12 18 ];
+        %tmp.102 = lgetv %pct.4;
+        symbol [ pct %tmp.102 52 23 26 ];
+        symbol [ SEG_N %tmp.104 52 29 34 ];
+        %tmp.104 = getv ? :SEG_N;
+        %tmp.105 = mul %tmp.102 %tmp.104;
+        %tmp.106 = 100.0;
+        %tmp.107 = div %tmp.105 %tmp.106;
+        %tmp.108 = 0.5;
+        %tmp.109 = add %tmp.107 %tmp.108;
+        symbol [ toNumber %tmp.110 52 51 59 ];
+        %tmp.110 = getv function %tmp.109 :toNumber;
+        %tmp.111 = invoke %tmp.109 %tmp.110();
+        lputv %filled.7 %tmp.111;
+        symbol [ filled %filled.7 52 12 18 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 53 8 ]
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_53_8_53_46_if_stmt:
+        %tmp.112 = lgetv %filled.7;
+        symbol [ filled %tmp.112 53 12 18 ];
+        symbol [ SEG_N %tmp.114 53 21 26 ];
+        %tmp.114 = getv ? :SEG_N;
+        %tmp.115 = gt %tmp.112 %tmp.114;
+        bf %tmp.115 @_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_53_8_53_46_if_end;
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_53_8_53_46_if_true:
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_53_28_53_46_start:
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 53 30 ]
+        symbol [ SEG_N %tmp.117 53 39 44 ];
+        %tmp.117 = getv ? :SEG_N;
+        lputv %filled.7 %tmp.117;
+        symbol [ filled %filled.7 53 30 36 ];
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_53_28_53_46_stop:
+        goto @_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_53_8_53_46_if_end;
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_53_8_53_46_if_end:
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 54 8 ]
+        for @_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_54_8_61_8_for_test @_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_54_8_61_8_for_incr @_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_54_8_61_8_for_end;
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_54_8_61_8_for_init:
+        [ "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_54_8_61_8_for_begin" "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_54_8_61_8_for_end" ]
+        %s.8 = local;
+        symbol [ s %s.8 54 17 18 ];
+        %tmp.118 = 0;
+        lputv %s.8 %tmp.118;
+        symbol [ s %s.8 54 17 18 ];
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_54_8_61_8_for_test:
+        %tmp.119 = lgetv %s.8;
+        symbol [ s %tmp.119 54 24 25 ];
+        symbol [ SEG_N %tmp.121 54 28 33 ];
+        %tmp.121 = getv ? :SEG_N;
+        %tmp.122 = lt %tmp.119 %tmp.121;
+        bf %tmp.122 @_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_54_8_61_8_for_end;
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_54_8_61_8_for_begin:
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_54_43_61_8_start:
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 55 12 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_54_43_61_8_start" "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_54_43_61_8_stop" ]
+        %f.9 = local;
+        symbol [ f %f.9 55 16 17 ];
+        symbol [ SEG_N %tmp.124 55 21 26 ];
+        %tmp.124 = getv ? :SEG_N;
+        %tmp.125 = lgetv %s.8;
+        symbol [ s %tmp.125 55 29 30 ];
+        %tmp.126 = sub %tmp.124 %tmp.125;
+        symbol [ toFloat %tmp.127 55 32 39 ];
+        %tmp.127 = getv function %tmp.126 :toFloat;
+        %tmp.128 = invoke %tmp.126 %tmp.127();
+        symbol [ SEG_N %tmp.130 55 44 49 ];
+        %tmp.130 = getv ? :SEG_N;
+        %tmp.131 = div %tmp.128 %tmp.130;
+        lputv %f.9 %tmp.131;
+        symbol [ f %f.9 55 16 17 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 56 12 ]
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_56_12_60_12_if_stmt:
+        %tmp.132 = lgetv %s.8;
+        symbol [ s %tmp.132 56 16 17 ];
+        %tmp.133 = lgetv %filled.7;
+        symbol [ filled %tmp.133 56 20 26 ];
+        %tmp.134 = lt %tmp.132 %tmp.133;
+        bf %tmp.134 @_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_56_12_60_12_if_else_false;
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_56_12_60_12_if_true:
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_56_28_58_12_start:
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 57 16 ]
+        %tmp.135 = self;
+        symbol [ drawSegment %tmp.136 57 16 27 ];
+        %tmp.136 = getv function %tmp.135 :drawSegment;
+        %tmp.137 = lgetv %dc;
+        symbol [ dc %tmp.137 57 28 30 ];
+        %tmp.138 = lgetv %subCx.2;
+        symbol [ subCx %tmp.138 57 32 37 ];
+        %tmp.139 = lgetv %subCy.3;
+        symbol [ subCy %tmp.139 57 39 44 ];
+        %tmp.140 = lgetv %f.9;
+        symbol [ f %tmp.140 57 46 47 ];
+        %tmp.141 = lgetv %segOut.6;
+        symbol [ segOut %tmp.141 57 49 55 ];
+        %tmp.142 = lgetv %col.5;
+        symbol [ col %tmp.142 57 57 60 ];
+        invoke %tmp.135 %tmp.136(%tmp.137, %tmp.138, %tmp.139, %tmp.140, %tmp.141, %tmp.142);
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_56_28_58_12_stop:
+        goto @_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_56_12_60_12_if_end;
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_56_12_60_12_if_else_false:
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_58_19_60_12_start:
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 59 16 ]
+        %tmp.143 = self;
+        symbol [ drawEmptyBall %tmp.144 59 16 29 ];
+        %tmp.144 = getv function %tmp.143 :drawEmptyBall;
+        %tmp.145 = lgetv %dc;
+        symbol [ dc %tmp.145 59 30 32 ];
+        %tmp.146 = lgetv %subCx.2;
+        symbol [ subCx %tmp.146 59 34 39 ];
+        %tmp.147 = lgetv %subCy.3;
+        symbol [ subCy %tmp.147 59 41 46 ];
+        %tmp.148 = lgetv %f.9;
+        symbol [ f %tmp.148 59 48 49 ];
+        %tmp.149 = lgetv %segOut.6;
+        symbol [ segOut %tmp.149 59 51 57 ];
+        invoke %tmp.143 %tmp.144(%tmp.145, %tmp.146, %tmp.147, %tmp.148, %tmp.149);
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_58_19_60_12_stop:
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_56_12_60_12_if_end:
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_54_43_61_8_stop:
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_54_8_61_8_for_incr:
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 54 ]
+        %tmp.150 = lgetv %s.8;
+        symbol [ s %tmp.150 54 35 36 ];
+        %tmp.151 = 1;
+        %tmp.152 = add %tmp.150 %tmp.151;
+        lputv %s.8 %tmp.152;
+        symbol [ s %s.8 54 35 36 ];
+        goto @_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_54_8_61_8_for_test;
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_54_8_61_8_for_end:
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 64 8 ]
+        %tmp.153 = self;
+        symbol [ drawBatteryGlyph %tmp.154 64 8 24 ];
+        %tmp.154 = getv function %tmp.153 :drawBatteryGlyph;
+        %tmp.155 = lgetv %dc;
+        symbol [ dc %tmp.155 64 25 27 ];
+        %tmp.156 = lgetv %subCx.2;
+        symbol [ subCx %tmp.156 64 29 34 ];
+        %tmp.157 = lgetv %subCy.3;
+        symbol [ subCy %tmp.157 64 36 41 ];
+        %tmp.158 = 16;
+        %tmp.159 = sub %tmp.157 %tmp.158;
+        %tmp.160 = 27;
+        %tmp.161 = 15;
+        %tmp.162 = lgetv %pct.4;
+        symbol [ pct %tmp.162 64 56 59 ];
+        %tmp.163 = lgetv %col.5;
+        symbol [ col %tmp.163 64 61 64 ];
+        invoke %tmp.153 %tmp.154(%tmp.155, %tmp.156, %tmp.159, %tmp.160, %tmp.161, %tmp.162, %tmp.163);
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 68 8 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_25_30_81_4_start" "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_25_30_81_4_stop" ]
+        %font.10 = local;
+        symbol [ font %font.10 68 12 16 ];
+        symbol [ Graphics %tmp.164 68 19 27 ];
+        %tmp.164 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.165 68 28 38 ];
+        %tmp.165 = getv %tmp.164 :FONT_XTINY;
+        lputv %font.10 %tmp.165;
+        symbol [ font %font.10 68 12 16 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 69 8 ]
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_69_8_76_8_if_stmt:
+        symbol [ Graphics %tmp.166 69 12 20 ];
+        %tmp.166 = getm $.Toybox.Graphics;
+        %tmp.168 = const :getVectorFont;
+        symbol [ getVectorFont %tmp.168 69 26 39 const ];
+        %tmp.169 = canhazplz %tmp.166 %tmp.168;
+        bf %tmp.169 @_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_69_8_76_8_if_end;
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_69_8_76_8_if_true:
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_69_41_76_8_start:
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 70 12 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_69_41_76_8_start" "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_69_41_76_8_stop" ]
+        %size.11 = local;
+        symbol [ size %size.11 70 16 20 ];
+        %tmp.170 = lgetv %dc;
+        symbol [ dc %tmp.170 70 25 27 ];
+        symbol [ getFontHeight %tmp.171 70 28 41 ];
+        %tmp.171 = getv function %tmp.170 :getFontHeight;
+        symbol [ Graphics %tmp.172 70 42 50 ];
+        %tmp.172 = getm $.Toybox.Graphics;
+        symbol [ FONT_XTINY %tmp.173 70 51 61 ];
+        %tmp.173 = getv %tmp.172 :FONT_XTINY;
+        %tmp.174 = invoke %tmp.170 %tmp.171(%tmp.173);
+        %tmp.175 = 3;
+        %tmp.176 = mul %tmp.174 %tmp.175;
+        %tmp.177 = 4;
+        %tmp.178 = div %tmp.176 %tmp.177;
+        lputv %size.11 %tmp.178;
+        symbol [ size %size.11 70 16 20 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 71 12 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_69_41_76_8_start" "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_69_41_76_8_stop" ]
+        %faces.12 = local;
+        symbol [ faces %faces.12 71 16 21 ];
+        %tmp.179 = newa 3;
+        %tmp.180 = "RobotoCondensedBold";
+        %tmp.181 = dup %tmp.179;
+        %tmp.182 = aputv %tmp.181 0 %tmp.180;
+        %tmp.183 = "RobotoRegular";
+        %tmp.184 = dup %tmp.182;
+        %tmp.185 = aputv %tmp.184 1 %tmp.183;
+        %tmp.186 = "RobotoCondensedRegular";
+        %tmp.187 = dup %tmp.185;
+        %tmp.188 = aputv %tmp.187 2 %tmp.186;
+        lputv %faces.12 %tmp.188;
+        symbol [ faces %faces.12 71 16 21 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 72 12 ]
+        for @_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_72_12_75_12_for_test @_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_72_12_75_12_for_incr @_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_72_12_75_12_for_end;
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_72_12_75_12_for_init:
+        [ "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_72_12_75_12_for_begin" "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_72_12_75_12_for_end" ]
+        %i.13 = local;
+        symbol [ i %i.13 72 21 22 ];
+        %tmp.189 = 0;
+        lputv %i.13 %tmp.189;
+        symbol [ i %i.13 72 21 22 ];
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_72_12_75_12_for_test:
+        %tmp.190 = lgetv %i.13;
+        symbol [ i %tmp.190 72 28 29 ];
+        %tmp.191 = lgetv %faces.12;
+        symbol [ faces %tmp.191 72 32 37 ];
+        symbol [ size %tmp.192 72 38 42 ];
+        %tmp.192 = getv function %tmp.191 :size;
+        %tmp.193 = invoke %tmp.191 %tmp.192();
+        %tmp.194 = lt %tmp.190 %tmp.193;
+        bf %tmp.194 @_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_72_12_75_12_for_end;
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_72_12_75_12_for_begin:
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_72_54_75_12_start:
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 73 16 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_72_54_75_12_start" "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_72_54_75_12_stop" ]
+        %vf.14 = local;
+        symbol [ vf %vf.14 73 20 22 ];
+        symbol [ Graphics %tmp.195 73 25 33 ];
+        %tmp.195 = getm $.Toybox.Graphics;
+        symbol [ getVectorFont %tmp.196 73 34 47 ];
+        %tmp.196 = getv function %tmp.195 :getVectorFont;
+        %tmp.197 = newd 2;
+        %tmp.199 = const :face;
+        symbol [ face %tmp.199 73 50 54 const ];
+        %tmp.200 = lgetv %faces.12;
+        symbol [ faces %tmp.200 73 58 63 ];
+        %tmp.201 = lgetv %i.13;
+        symbol [ i %tmp.201 73 64 65 ];
+        %tmp.202 = agetv %tmp.200 %tmp.201;
+        %tmp.203 = dup %tmp.197;
+        %tmp.204 = aputv %tmp.203 %tmp.199 %tmp.202;
+        %tmp.206 = const :size;
+        symbol [ size %tmp.206 73 69 73 const ];
+        %tmp.207 = lgetv %size.11;
+        symbol [ size %tmp.207 73 77 81 ];
+        %tmp.208 = dup %tmp.204;
+        %tmp.209 = aputv %tmp.208 %tmp.206 %tmp.207;
+        %tmp.210 = invoke %tmp.195 %tmp.196(%tmp.209);
+        lputv %vf.14 %tmp.210;
+        symbol [ vf %vf.14 73 20 22 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 74 16 ]
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_74_16_74_52_if_stmt:
+        %tmp.211 = lgetv %vf.14;
+        symbol [ vf %tmp.211 74 20 22 ];
+        %tmp.212 = null;
+        %tmp.213 = ne %tmp.211 %tmp.212;
+        bf %tmp.213 @_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_74_16_74_52_if_end;
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_74_16_74_52_if_true:
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_74_32_74_52_start:
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 74 34 ]
+        %tmp.214 = lgetv %vf.14;
+        symbol [ vf %tmp.214 74 41 43 ];
+        %tmp.215 = as %tmp.214 { (!Null) };
+        lputv %font.10 %tmp.215;
+        symbol [ font %font.10 74 34 38 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 74 45 ]
+        goto break @_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_72_12_75_12_for_end;
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_74_32_74_52_stop:
+        goto @_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_74_16_74_52_if_end;
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_74_16_74_52_if_end:
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_72_54_75_12_stop:
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_72_12_75_12_for_incr:
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 72 ]
+        %tmp.216 = lgetv %i.13;
+        symbol [ i %tmp.216 72 46 47 ];
+        %tmp.217 = 1;
+        %tmp.218 = add %tmp.216 %tmp.217;
+        lputv %i.13 %tmp.218;
+        symbol [ i %i.13 72 46 47 ];
+        goto @_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_72_12_75_12_for_test;
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_72_12_75_12_for_end:
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_69_41_76_8_stop:
+        goto @_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_69_8_76_8_if_end;
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_69_8_76_8_if_end:
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 78 8 ]
+        %tmp.219 = lgetv %dc;
+        symbol [ dc %tmp.219 78 8 10 ];
+        symbol [ setColor %tmp.220 78 11 19 ];
+        %tmp.220 = getv function %tmp.219 :setColor;
+        %tmp.221 = lgetv %col.5;
+        symbol [ col %tmp.221 78 20 23 ];
+        symbol [ Graphics %tmp.222 78 25 33 ];
+        %tmp.222 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.223 78 34 51 ];
+        %tmp.223 = getv %tmp.222 :COLOR_TRANSPARENT;
+        invoke %tmp.219 %tmp.220(%tmp.221, %tmp.223);
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 79 8 ]
+        %tmp.224 = lgetv %dc;
+        symbol [ dc %tmp.224 79 8 10 ];
+        symbol [ drawText %tmp.225 79 11 19 ];
+        %tmp.225 = getv function %tmp.224 :drawText;
+        %tmp.226 = lgetv %subCx.2;
+        symbol [ subCx %tmp.226 79 20 25 ];
+        %tmp.227 = lgetv %subCy.3;
+        symbol [ subCy %tmp.227 79 27 32 ];
+        %tmp.228 = 12;
+        %tmp.229 = add %tmp.227 %tmp.228;
+        %tmp.230 = lgetv %font.10;
+        symbol [ font %tmp.230 79 39 43 ];
+        %tmp.231 = lgetv %pct.4;
+        symbol [ pct %tmp.231 79 45 48 ];
+        symbol [ toString %tmp.232 79 49 57 ];
+        %tmp.232 = getv function %tmp.231 :toString;
+        %tmp.233 = invoke %tmp.231 %tmp.232();
+        %tmp.234 = "%";
+        %tmp.235 = add %tmp.233 %tmp.234;
+        symbol [ Graphics %tmp.236 80 20 28 ];
+        %tmp.236 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.237 80 29 48 ];
+        %tmp.237 = getv %tmp.236 :TEXT_JUSTIFY_CENTER;
+        symbol [ Graphics %tmp.238 80 51 59 ];
+        %tmp.238 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.239 80 60 80 ];
+        %tmp.239 = getv %tmp.238 :TEXT_JUSTIFY_VCENTER;
+        %tmp.240 = bitor %tmp.237 %tmp.239;
+        invoke %tmp.224 %tmp.225(%tmp.226, %tmp.229, %tmp.230, %tmp.235, %tmp.240);
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_25_30_81_4_stop:
+    }
+    [ @file = "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc"; @line = 84; @symbol_functiondef = [drawSegment,84,21,32]; @symbol_param<0> = [dc,84,33,35]; @symbol_param<1> = [cx,84,37,39]; @symbol_param<2> = [cy,84,41,43]; @symbol_param<3> = [fraction,84,45,53]; @symbol_param<4> = [rOut,84,55,59]; @symbol_param<5> = [color,84,61,66]; ]
+    private
+    function drawSegment(dc, cx, cy, fraction, rOut, color) {
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_84_68_99_4_start:
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 85 8 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_84_68_99_4_start" "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_84_68_99_4_stop" ]
+        %a.1 = local;
+        symbol [ a %a.1 85 12 13 ];
+        %tmp.1 = lgetv %fraction;
+        symbol [ fraction %tmp.1 85 18 26 ];
+        %tmp.2 = 2.0;
+        %tmp.3 = mul %tmp.1 %tmp.2;
+        symbol [ Math %tmp.4 85 35 39 ];
+        %tmp.4 = getm $.Toybox.Math;
+        symbol [ PI %tmp.5 85 40 42 ];
+        %tmp.5 = getv %tmp.4 :PI;
+        %tmp.6 = mul %tmp.3 %tmp.5;
+        symbol [ Math %tmp.7 85 47 51 ];
+        %tmp.7 = getm $.Toybox.Math;
+        symbol [ PI %tmp.8 85 52 54 ];
+        %tmp.8 = getv %tmp.7 :PI;
+        %tmp.9 = 2.0;
+        %tmp.10 = div %tmp.8 %tmp.9;
+        %tmp.11 = sub %tmp.6 %tmp.10;
+        lputv %a.1 %tmp.11;
+        symbol [ a %a.1 85 12 13 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 86 8 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_84_68_99_4_start" "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_84_68_99_4_stop" ]
+        %ca.2 = local;
+        symbol [ ca %ca.2 86 12 14 ];
+        symbol [ Math %tmp.12 86 17 21 ];
+        %tmp.12 = getm $.Toybox.Math;
+        symbol [ cos %tmp.13 86 22 25 ];
+        %tmp.13 = getv function %tmp.12 :cos;
+        %tmp.14 = lgetv %a.1;
+        symbol [ a %tmp.14 86 26 27 ];
+        %tmp.15 = invoke %tmp.12 %tmp.13(%tmp.14);
+        lputv %ca.2 %tmp.15;
+        symbol [ ca %ca.2 86 12 14 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 87 8 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_84_68_99_4_start" "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_84_68_99_4_stop" ]
+        %sa.3 = local;
+        symbol [ sa %sa.3 87 12 14 ];
+        symbol [ Math %tmp.16 87 17 21 ];
+        %tmp.16 = getm $.Toybox.Math;
+        symbol [ sin %tmp.17 87 22 25 ];
+        %tmp.17 = getv function %tmp.16 :sin;
+        %tmp.18 = lgetv %a.1;
+        symbol [ a %tmp.18 87 26 27 ];
+        %tmp.19 = invoke %tmp.16 %tmp.17(%tmp.18);
+        lputv %sa.3 %tmp.19;
+        symbol [ sa %sa.3 87 12 14 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 88 8 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_84_68_99_4_start" "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_84_68_99_4_stop" ]
+        %px.4 = local;
+        symbol [ px %px.4 88 12 14 ];
+        %tmp.20 = lgetv %sa.3;
+        symbol [ sa %tmp.20 88 18 20 ];
+        %tmp.21 = sub 0 %tmp.20;
+        lputv %px.4 %tmp.21;
+        symbol [ px %px.4 88 12 14 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 89 8 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_84_68_99_4_start" "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_84_68_99_4_stop" ]
+        %py.5 = local;
+        symbol [ py %py.5 89 12 14 ];
+        %tmp.22 = lgetv %ca.2;
+        symbol [ ca %tmp.22 89 18 20 ];
+        lputv %py.5 %tmp.22;
+        symbol [ py %py.5 89 12 14 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 90 8 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_84_68_99_4_start" "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_84_68_99_4_stop" ]
+        %ox.6 = local;
+        symbol [ ox %ox.6 90 12 14 ];
+        %tmp.23 = lgetv %cx;
+        symbol [ cx %tmp.23 90 17 19 ];
+        %tmp.24 = lgetv %rOut;
+        symbol [ rOut %tmp.24 90 22 26 ];
+        %tmp.25 = lgetv %ca.2;
+        symbol [ ca %tmp.25 90 29 31 ];
+        %tmp.26 = mul %tmp.24 %tmp.25;
+        %tmp.27 = add %tmp.23 %tmp.26;
+        lputv %ox.6 %tmp.27;
+        symbol [ ox %ox.6 90 12 14 ];
+        [ "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_84_68_99_4_start" "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_84_68_99_4_stop" ]
+        %oy.7 = local;
+        symbol [ oy %oy.7 90 45 47 ];
+        %tmp.28 = lgetv %cy;
+        symbol [ cy %tmp.28 90 50 52 ];
+        %tmp.29 = lgetv %rOut;
+        symbol [ rOut %tmp.29 90 55 59 ];
+        %tmp.30 = lgetv %sa.3;
+        symbol [ sa %tmp.30 90 62 64 ];
+        %tmp.31 = mul %tmp.29 %tmp.30;
+        %tmp.32 = add %tmp.28 %tmp.31;
+        lputv %oy.7 %tmp.32;
+        symbol [ oy %oy.7 90 45 47 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 91 8 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_84_68_99_4_start" "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_84_68_99_4_stop" ]
+        %ix.8 = local;
+        symbol [ ix %ix.8 91 12 14 ];
+        %tmp.33 = lgetv %cx;
+        symbol [ cx %tmp.33 91 17 19 ];
+        %tmp.34 = lgetv %rOut;
+        symbol [ rOut %tmp.34 91 23 27 ];
+        symbol [ SEG_LEN %tmp.36 91 30 37 ];
+        %tmp.36 = getv ? :SEG_LEN;
+        %tmp.37 = sub %tmp.34 %tmp.36;
+        %tmp.38 = lgetv %ca.2;
+        symbol [ ca %tmp.38 91 41 43 ];
+        %tmp.39 = mul %tmp.37 %tmp.38;
+        %tmp.40 = add %tmp.33 %tmp.39;
+        lputv %ix.8 %tmp.40;
+        symbol [ ix %ix.8 91 12 14 ];
+        [ "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_84_68_99_4_start" "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_84_68_99_4_stop" ]
+        %iy.9 = local;
+        symbol [ iy %iy.9 91 45 47 ];
+        %tmp.41 = lgetv %cy;
+        symbol [ cy %tmp.41 91 50 52 ];
+        %tmp.42 = lgetv %rOut;
+        symbol [ rOut %tmp.42 91 56 60 ];
+        symbol [ SEG_LEN %tmp.44 91 63 70 ];
+        %tmp.44 = getv ? :SEG_LEN;
+        %tmp.45 = sub %tmp.42 %tmp.44;
+        %tmp.46 = lgetv %sa.3;
+        symbol [ sa %tmp.46 91 74 76 ];
+        %tmp.47 = mul %tmp.45 %tmp.46;
+        %tmp.48 = add %tmp.41 %tmp.47;
+        lputv %iy.9 %tmp.48;
+        symbol [ iy %iy.9 91 45 47 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 92 8 ]
+        %tmp.49 = lgetv %dc;
+        symbol [ dc %tmp.49 92 8 10 ];
+        symbol [ setColor %tmp.50 92 11 19 ];
+        %tmp.50 = getv function %tmp.49 :setColor;
+        %tmp.51 = lgetv %color;
+        symbol [ color %tmp.51 92 20 25 ];
+        symbol [ Graphics %tmp.52 92 27 35 ];
+        %tmp.52 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.53 92 36 53 ];
+        %tmp.53 = getv %tmp.52 :COLOR_TRANSPARENT;
+        invoke %tmp.49 %tmp.50(%tmp.51, %tmp.53);
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 93 8 ]
+        %tmp.54 = lgetv %dc;
+        symbol [ dc %tmp.54 93 8 10 ];
+        symbol [ fillPolygon %tmp.55 93 11 22 ];
+        %tmp.55 = getv function %tmp.54 :fillPolygon;
+        %tmp.56 = newa 4;
+        %tmp.57 = newa 2;
+        %tmp.58 = lgetv %ox.6;
+        symbol [ ox %tmp.58 94 14 16 ];
+        %tmp.59 = lgetv %px.4;
+        symbol [ px %tmp.59 94 19 21 ];
+        symbol [ SEG_HW %tmp.61 94 24 30 ];
+        %tmp.61 = getv ? :SEG_HW;
+        %tmp.62 = mul %tmp.59 %tmp.61;
+        %tmp.63 = add %tmp.58 %tmp.62;
+        %tmp.64 = dup %tmp.57;
+        %tmp.65 = aputv %tmp.64 0 %tmp.63;
+        %tmp.66 = lgetv %oy.7;
+        symbol [ oy %tmp.66 94 32 34 ];
+        %tmp.67 = lgetv %py.5;
+        symbol [ py %tmp.67 94 37 39 ];
+        symbol [ SEG_HW %tmp.69 94 42 48 ];
+        %tmp.69 = getv ? :SEG_HW;
+        %tmp.70 = mul %tmp.67 %tmp.69;
+        %tmp.71 = add %tmp.66 %tmp.70;
+        %tmp.72 = dup %tmp.65;
+        %tmp.73 = aputv %tmp.72 1 %tmp.71;
+        %tmp.74 = dup %tmp.56;
+        %tmp.75 = aputv %tmp.74 0 %tmp.73;
+        %tmp.76 = newa 2;
+        %tmp.77 = lgetv %ox.6;
+        symbol [ ox %tmp.77 95 14 16 ];
+        %tmp.78 = lgetv %px.4;
+        symbol [ px %tmp.78 95 19 21 ];
+        symbol [ SEG_HW %tmp.80 95 24 30 ];
+        %tmp.80 = getv ? :SEG_HW;
+        %tmp.81 = mul %tmp.78 %tmp.80;
+        %tmp.82 = sub %tmp.77 %tmp.81;
+        %tmp.83 = dup %tmp.76;
+        %tmp.84 = aputv %tmp.83 0 %tmp.82;
+        %tmp.85 = lgetv %oy.7;
+        symbol [ oy %tmp.85 95 32 34 ];
+        %tmp.86 = lgetv %py.5;
+        symbol [ py %tmp.86 95 37 39 ];
+        symbol [ SEG_HW %tmp.88 95 42 48 ];
+        %tmp.88 = getv ? :SEG_HW;
+        %tmp.89 = mul %tmp.86 %tmp.88;
+        %tmp.90 = sub %tmp.85 %tmp.89;
+        %tmp.91 = dup %tmp.84;
+        %tmp.92 = aputv %tmp.91 1 %tmp.90;
+        %tmp.93 = dup %tmp.75;
+        %tmp.94 = aputv %tmp.93 1 %tmp.92;
+        %tmp.95 = newa 2;
+        %tmp.96 = lgetv %ix.8;
+        symbol [ ix %tmp.96 96 14 16 ];
+        %tmp.97 = lgetv %px.4;
+        symbol [ px %tmp.97 96 19 21 ];
+        symbol [ SEG_HW %tmp.99 96 24 30 ];
+        %tmp.99 = getv ? :SEG_HW;
+        %tmp.100 = mul %tmp.97 %tmp.99;
+        %tmp.101 = sub %tmp.96 %tmp.100;
+        %tmp.102 = dup %tmp.95;
+        %tmp.103 = aputv %tmp.102 0 %tmp.101;
+        %tmp.104 = lgetv %iy.9;
+        symbol [ iy %tmp.104 96 32 34 ];
+        %tmp.105 = lgetv %py.5;
+        symbol [ py %tmp.105 96 37 39 ];
+        symbol [ SEG_HW %tmp.107 96 42 48 ];
+        %tmp.107 = getv ? :SEG_HW;
+        %tmp.108 = mul %tmp.105 %tmp.107;
+        %tmp.109 = sub %tmp.104 %tmp.108;
+        %tmp.110 = dup %tmp.103;
+        %tmp.111 = aputv %tmp.110 1 %tmp.109;
+        %tmp.112 = dup %tmp.94;
+        %tmp.113 = aputv %tmp.112 2 %tmp.111;
+        %tmp.114 = newa 2;
+        %tmp.115 = lgetv %ix.8;
+        symbol [ ix %tmp.115 97 14 16 ];
+        %tmp.116 = lgetv %px.4;
+        symbol [ px %tmp.116 97 19 21 ];
+        symbol [ SEG_HW %tmp.118 97 24 30 ];
+        %tmp.118 = getv ? :SEG_HW;
+        %tmp.119 = mul %tmp.116 %tmp.118;
+        %tmp.120 = add %tmp.115 %tmp.119;
+        %tmp.121 = dup %tmp.114;
+        %tmp.122 = aputv %tmp.121 0 %tmp.120;
+        %tmp.123 = lgetv %iy.9;
+        symbol [ iy %tmp.123 97 32 34 ];
+        %tmp.124 = lgetv %py.5;
+        symbol [ py %tmp.124 97 37 39 ];
+        symbol [ SEG_HW %tmp.126 97 42 48 ];
+        %tmp.126 = getv ? :SEG_HW;
+        %tmp.127 = mul %tmp.124 %tmp.126;
+        %tmp.128 = add %tmp.123 %tmp.127;
+        %tmp.129 = dup %tmp.122;
+        %tmp.130 = aputv %tmp.129 1 %tmp.128;
+        %tmp.131 = dup %tmp.113;
+        %tmp.132 = aputv %tmp.131 3 %tmp.130;
+        invoke %tmp.54 %tmp.55(%tmp.132);
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_84_68_99_4_stop:
+    }
+    [ @file = "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc"; @line = 102; @symbol_functiondef = [drawEmptyBall,102,21,34]; @symbol_param<0> = [dc,102,35,37]; @symbol_param<1> = [cx,102,39,41]; @symbol_param<2> = [cy,102,43,45]; @symbol_param<3> = [fraction,102,47,55]; @symbol_param<4> = [rOut,102,57,61]; ]
+    private
+    function drawEmptyBall(dc, cx, cy, fraction, rOut) {
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_102_63_107_4_start:
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 103 8 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_102_63_107_4_start" "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_102_63_107_4_stop" ]
+        %rMid.1 = local;
+        symbol [ rMid %rMid.1 103 12 16 ];
+        %tmp.1 = lgetv %rOut;
+        symbol [ rOut %tmp.1 103 19 23 ];
+        symbol [ SEG_LEN %tmp.3 103 27 34 ];
+        %tmp.3 = getv ? :SEG_LEN;
+        %tmp.4 = 2;
+        %tmp.5 = div %tmp.3 %tmp.4;
+        %tmp.6 = sub %tmp.1 %tmp.5;
+        lputv %rMid.1 %tmp.6;
+        symbol [ rMid %rMid.1 103 12 16 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 104 8 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_102_63_107_4_start" "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_102_63_107_4_stop" ]
+        %p.2 = local;
+        symbol [ p %p.2 104 12 13 ];
+        symbol [ Geometry %tmp.8 104 16 24 ];
+        %tmp.8 = getv ? :Geometry;
+        symbol [ polar %tmp.9 104 25 30 ];
+        %tmp.9 = getv function %tmp.8 :polar;
+        %tmp.10 = lgetv %cx;
+        symbol [ cx %tmp.10 104 31 33 ];
+        %tmp.11 = lgetv %cy;
+        symbol [ cy %tmp.11 104 35 37 ];
+        %tmp.12 = lgetv %rMid.1;
+        symbol [ rMid %tmp.12 104 39 43 ];
+        %tmp.13 = lgetv %fraction;
+        symbol [ fraction %tmp.13 104 45 53 ];
+        %tmp.14 = invoke %tmp.8 %tmp.9(%tmp.10, %tmp.11, %tmp.12, %tmp.13);
+        lputv %p.2 %tmp.14;
+        symbol [ p %p.2 104 12 13 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 105 8 ]
+        %tmp.15 = lgetv %dc;
+        symbol [ dc %tmp.15 105 8 10 ];
+        symbol [ setColor %tmp.16 105 11 19 ];
+        %tmp.16 = getv function %tmp.15 :setColor;
+        %tmp.17 = 0x505050;
+        symbol [ Graphics %tmp.18 105 30 38 ];
+        %tmp.18 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.19 105 39 56 ];
+        %tmp.19 = getv %tmp.18 :COLOR_TRANSPARENT;
+        invoke %tmp.15 %tmp.16(%tmp.17, %tmp.19);
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 106 8 ]
+        %tmp.20 = lgetv %dc;
+        symbol [ dc %tmp.20 106 8 10 ];
+        symbol [ fillCircle %tmp.21 106 11 21 ];
+        %tmp.21 = getv function %tmp.20 :fillCircle;
+        %tmp.22 = lgetv %p.2;
+        symbol [ p %tmp.22 106 22 23 ];
+        %tmp.23 = 0;
+        %tmp.24 = agetv %tmp.22 %tmp.23;
+        %tmp.25 = lgetv %p.2;
+        symbol [ p %tmp.25 106 28 29 ];
+        %tmp.26 = 1;
+        %tmp.27 = agetv %tmp.25 %tmp.26;
+        symbol [ SEG_DOT %tmp.29 106 34 41 ];
+        %tmp.29 = getv ? :SEG_DOT;
+        invoke %tmp.20 %tmp.21(%tmp.24, %tmp.27, %tmp.29);
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_102_63_107_4_stop:
+    }
+    [ @file = "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc"; @line = 111; @symbol_functiondef = [drawBatteryGlyph,111,21,37]; @symbol_param<0> = [dc,111,38,40]; @symbol_param<1> = [cx,111,42,44]; @symbol_param<2> = [cy,111,46,48]; @symbol_param<3> = [w,111,50,51]; @symbol_param<4> = [h,111,53,54]; @symbol_param<5> = [pct,111,56,59]; @symbol_param<6> = [color,111,61,66]; ]
+    private
+    function drawBatteryGlyph(dc, cx, cy, w, h, pct, color) {
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_111_68_121_4_start:
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 112 8 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_111_68_121_4_start" "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_111_68_121_4_stop" ]
+        %x.1 = local;
+        symbol [ x %x.1 112 12 13 ];
+        %tmp.1 = lgetv %cx;
+        symbol [ cx %tmp.1 112 16 18 ];
+        %tmp.2 = lgetv %w;
+        symbol [ w %tmp.2 112 21 22 ];
+        %tmp.3 = 2;
+        %tmp.4 = div %tmp.2 %tmp.3;
+        %tmp.5 = sub %tmp.1 %tmp.4;
+        lputv %x.1 %tmp.5;
+        symbol [ x %x.1 112 12 13 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 113 8 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_111_68_121_4_start" "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_111_68_121_4_stop" ]
+        %y.2 = local;
+        symbol [ y %y.2 113 12 13 ];
+        %tmp.6 = lgetv %cy;
+        symbol [ cy %tmp.6 113 16 18 ];
+        %tmp.7 = lgetv %h;
+        symbol [ h %tmp.7 113 21 22 ];
+        %tmp.8 = 2;
+        %tmp.9 = div %tmp.7 %tmp.8;
+        %tmp.10 = sub %tmp.6 %tmp.9;
+        lputv %y.2 %tmp.10;
+        symbol [ y %y.2 113 12 13 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 114 8 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_111_68_121_4_start" "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_111_68_121_4_stop" ]
+        %nubH.3 = local;
+        symbol [ nubH %nubH.3 114 12 16 ];
+        %tmp.11 = lgetv %h;
+        symbol [ h %tmp.11 114 19 20 ];
+        %tmp.12 = 3;
+        %tmp.13 = div %tmp.11 %tmp.12;
+        lputv %nubH.3 %tmp.13;
+        symbol [ nubH %nubH.3 114 12 16 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 115 8 ]
+        %tmp.14 = lgetv %dc;
+        symbol [ dc %tmp.14 115 8 10 ];
+        symbol [ setColor %tmp.15 115 11 19 ];
+        %tmp.15 = getv function %tmp.14 :setColor;
+        %tmp.16 = lgetv %color;
+        symbol [ color %tmp.16 115 20 25 ];
+        symbol [ Graphics %tmp.17 115 27 35 ];
+        %tmp.17 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.18 115 36 53 ];
+        %tmp.18 = getv %tmp.17 :COLOR_TRANSPARENT;
+        invoke %tmp.14 %tmp.15(%tmp.16, %tmp.18);
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 116 8 ]
+        %tmp.19 = lgetv %dc;
+        symbol [ dc %tmp.19 116 8 10 ];
+        symbol [ setPenWidth %tmp.20 116 11 22 ];
+        %tmp.20 = getv function %tmp.19 :setPenWidth;
+        %tmp.21 = 2;
+        invoke %tmp.19 %tmp.20(%tmp.21);
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 117 8 ]
+        %tmp.22 = lgetv %dc;
+        symbol [ dc %tmp.22 117 8 10 ];
+        symbol [ drawRectangle %tmp.23 117 11 24 ];
+        %tmp.23 = getv function %tmp.22 :drawRectangle;
+        %tmp.24 = lgetv %x.1;
+        symbol [ x %tmp.24 117 25 26 ];
+        %tmp.25 = lgetv %y.2;
+        symbol [ y %tmp.25 117 28 29 ];
+        %tmp.26 = lgetv %w;
+        symbol [ w %tmp.26 117 31 32 ];
+        %tmp.27 = lgetv %h;
+        symbol [ h %tmp.27 117 34 35 ];
+        invoke %tmp.22 %tmp.23(%tmp.24, %tmp.25, %tmp.26, %tmp.27);
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 118 8 ]
+        %tmp.28 = lgetv %dc;
+        symbol [ dc %tmp.28 118 8 10 ];
+        symbol [ fillRectangle %tmp.29 118 11 24 ];
+        %tmp.29 = getv function %tmp.28 :fillRectangle;
+        %tmp.30 = lgetv %x.1;
+        symbol [ x %tmp.30 118 25 26 ];
+        %tmp.31 = lgetv %w;
+        symbol [ w %tmp.31 118 29 30 ];
+        %tmp.32 = add %tmp.30 %tmp.31;
+        %tmp.33 = lgetv %y.2;
+        symbol [ y %tmp.33 118 32 33 ];
+        %tmp.34 = lgetv %h;
+        symbol [ h %tmp.34 118 37 38 ];
+        %tmp.35 = lgetv %nubH.3;
+        symbol [ nubH %tmp.35 118 41 45 ];
+        %tmp.36 = sub %tmp.34 %tmp.35;
+        %tmp.37 = 2;
+        %tmp.38 = div %tmp.36 %tmp.37;
+        %tmp.39 = add %tmp.33 %tmp.38;
+        %tmp.40 = 3;
+        %tmp.41 = lgetv %nubH.3;
+        symbol [ nubH %tmp.41 118 55 59 ];
+        invoke %tmp.28 %tmp.29(%tmp.32, %tmp.39, %tmp.40, %tmp.41);
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 119 8 ]
+        [ "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_111_68_121_4_start" "_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_111_68_121_4_stop" ]
+        %fw.4 = local;
+        symbol [ fw %fw.4 119 12 14 ];
+        %tmp.42 = lgetv %w;
+        symbol [ w %tmp.42 119 19 20 ];
+        %tmp.43 = 4;
+        %tmp.44 = sub %tmp.42 %tmp.43;
+        %tmp.45 = lgetv %pct;
+        symbol [ pct %tmp.45 119 28 31 ];
+        %tmp.46 = mul %tmp.44 %tmp.45;
+        %tmp.47 = 100.0;
+        %tmp.48 = div %tmp.46 %tmp.47;
+        symbol [ toNumber %tmp.49 119 41 49 ];
+        %tmp.49 = getv function %tmp.48 :toNumber;
+        %tmp.50 = invoke %tmp.48 %tmp.49();
+        lputv %fw.4 %tmp.50;
+        symbol [ fw %fw.4 119 12 14 ];
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 120 8 ]
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_120_8_120_65_if_stmt:
+        %tmp.51 = lgetv %fw.4;
+        symbol [ fw %tmp.51 120 12 14 ];
+        %tmp.52 = 0;
+        %tmp.53 = gt %tmp.51 %tmp.52;
+        bf %tmp.53 @_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_120_8_120_65_if_end;
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_120_8_120_65_if_true:
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_120_20_120_65_start:
+[ "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc" 120 22 ]
+        %tmp.54 = lgetv %dc;
+        symbol [ dc %tmp.54 120 22 24 ];
+        symbol [ fillRectangle %tmp.55 120 25 38 ];
+        %tmp.55 = getv function %tmp.54 :fillRectangle;
+        %tmp.56 = lgetv %x.1;
+        symbol [ x %tmp.56 120 39 40 ];
+        %tmp.57 = 2;
+        %tmp.58 = add %tmp.56 %tmp.57;
+        %tmp.59 = lgetv %y.2;
+        symbol [ y %tmp.59 120 46 47 ];
+        %tmp.60 = 2;
+        %tmp.61 = add %tmp.59 %tmp.60;
+        %tmp.62 = lgetv %fw.4;
+        symbol [ fw %tmp.62 120 53 55 ];
+        %tmp.63 = lgetv %h;
+        symbol [ h %tmp.63 120 57 58 ];
+        %tmp.64 = 4;
+        %tmp.65 = sub %tmp.63 %tmp.64;
+        invoke %tmp.54 %tmp.55(%tmp.58, %tmp.61, %tmp.62, %tmp.65);
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_120_20_120_65_stop:
+        goto @_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_120_8_120_65_if_end;
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_120_8_120_65_if_end:
+_Users_moarwaffles_dev_FIELD_source_components_BatteryDial_mc_111_68_121_4_stop:
+    }
+}
+[ @file = "/Users/moarwaffles/dev/FIELD/source/components/BatteryDial.mc"; @line = 1; ]
+<init> {
+}
