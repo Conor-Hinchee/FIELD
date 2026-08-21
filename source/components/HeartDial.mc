@@ -4,13 +4,13 @@ import Toybox.System;
 import Toybox.Activity;
 import Toybox.ActivityMonitor;
 
-// HeartDial — a beveled sub-dial matching the battery/weather bezels, seated
-// between the 7 and 8 o'clock indices. Shows a heart glyph + live BPM.
+// HeartDial — a beveled sub-dial between the 7 and 8 o'clock indices showing a
+// red heart glyph (with a subtle once-per-second pulse) + live BPM.
 class HeartDial {
 
     const POS_FRAC = 7.5 / 12.0;  // clock position (between 7 and 8)
     const POS_R    = 110;         // sub-dial center distance from dial center
-    const DIAL_R   = 40;          // sub-dial radius (25% smaller)
+    const DIAL_R   = 40;          // sub-dial radius
     const RIM      = 3;           // bezel thickness
 
     function draw(dc, cx, cy) {
@@ -18,38 +18,27 @@ class HeartDial {
         var hcx = p[0];
         var hcy = p[1];
 
-        // dark-grey bezel base
-        dc.setColor(0x484848, Graphics.COLOR_TRANSPARENT);
-        dc.fillCircle(hcx, hcy, DIAL_R);
-
-        // beveled rim: lighter grey on top, darker on the bottom (top-lit)
-        dc.setPenWidth(RIM);
-        dc.setColor(0x707070, Graphics.COLOR_TRANSPARENT);
-        dc.drawArc(hcx, hcy, DIAL_R - 2, Graphics.ARC_COUNTER_CLOCKWISE, 35, 145);
-        dc.setColor(0x282828, Graphics.COLOR_TRANSPARENT);
-        dc.drawArc(hcx, hcy, DIAL_R - 2, Graphics.ARC_COUNTER_CLOCKWISE, 215, 325);
-
-        // black face
-        dc.setColor(0x000000, Graphics.COLOR_TRANSPARENT);
-        dc.fillCircle(hcx, hcy, DIAL_R - RIM);
+        SubDial.beveledFace(dc, hcx, hcy, DIAL_R, RIM);
 
         // --- heart rate ---
         var hr    = currentHeartRate();
         var hrStr = (hr != null) ? hr.toString() : "--";
 
-        // red heart glyph that pulses once per second (active mode only —
+        // red heart glyph, subtle pulse every 3rd second (active mode only —
         // a watch face can't redraw fast enough for a true heartbeat)
         var pulse = ((System.getClockTime().sec % 3) == 0) ? 12.5 : 12.0;
         drawHeart(dc, hcx, hcy - 14, pulse, Palette.ACCENT);
 
-        // BPM number (near center)
+        // BPM number
         dc.setColor(Palette.PRIMARY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(hcx, hcy + 4, vfont(dc, (dc.getFontHeight(Graphics.FONT_XTINY) * 11) / 20),
+        dc.drawText(hcx, hcy + 4,
+                    Fonts.vector(dc, (dc.getFontHeight(Graphics.FONT_XTINY) * 11) / 20),
                     hrStr, Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
         // BPM label
         dc.setColor(Palette.TERTIARY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(hcx, hcy + 19, vfont(dc, (dc.getFontHeight(Graphics.FONT_XTINY) * 3) / 8),
+        dc.drawText(hcx, hcy + 19,
+                    Fonts.vector(dc, (dc.getFontHeight(Graphics.FONT_XTINY) * 3) / 8),
                     "BPM", Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
     }
 
@@ -69,9 +58,9 @@ class HeartDial {
         ]);
     }
 
+    // Guarded: HR access can throw in a watch-face context on some devices;
+    // degrade to "--" rather than taking down the whole face.
     private function currentHeartRate() {
-        // Guarded: HR access can throw in a watch-face context on some
-        // devices; degrade to "--" rather than taking down the whole face.
         try {
             var act = Activity.getActivityInfo();
             if (act != null && act.currentHeartRate != null) {
@@ -89,16 +78,5 @@ class HeartDial {
             return null;
         }
         return null;
-    }
-
-    private function vfont(dc, size) {
-        if (Graphics has :getVectorFont) {
-            var faces = ["RobotoCondensedBold", "RobotoRegular", "RobotoCondensedRegular"];
-            for (var i = 0; i < faces.size(); i += 1) {
-                var vf = Graphics.getVectorFont({:face => faces[i], :size => size});
-                if (vf != null) { return vf; }
-            }
-        }
-        return Graphics.FONT_XTINY;
     }
 }

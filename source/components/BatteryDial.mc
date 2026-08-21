@@ -3,16 +3,16 @@ import Toybox.System;
 import Toybox.Lang;
 import Toybox.Math;
 
-// BatteryDial — a beveled sub-dial (chapter-ring metal) with a black face,
-// seated just below the 12 o'clock index, showing the live battery percentage.
+// BatteryDial — a beveled sub-dial below the 12 o'clock index: a segmented
+// level ring, a battery glyph, and the live battery percentage.
 //
 // Geometry is anchored to the chapter ring: the 12 index's inner tip sits at
 // (INSET + LENGTH) = 50 px in from the screen edge, and we drop GAP px below.
 class BatteryDial {
 
     const IDX_INNER = 50;   // chapter-ring INSET(2) + LENGTH(48)
-    const GAP       = 15;   // gap below the 12 index (kept fixed)
-    const DIAL_R    = 54;   // sub-dial radius (50% larger)
+    const GAP       = 15;   // gap below the 12 index
+    const DIAL_R    = 54;   // sub-dial radius
     const RIM       = 4;    // bezel thickness
 
     // segmented level gauge around the inner edge
@@ -27,20 +27,7 @@ class BatteryDial {
         var subCx     = cx;
         var subCy     = cy - (topRadius - DIAL_R);   // sub-dial center
 
-        // dark-grey bezel base
-        dc.setColor(0x484848, Graphics.COLOR_TRANSPARENT);
-        dc.fillCircle(subCx, subCy, DIAL_R);
-
-        // beveled rim: lighter grey on top, darker on the bottom (top-lit)
-        dc.setPenWidth(RIM);
-        dc.setColor(0x707070, Graphics.COLOR_TRANSPARENT);
-        dc.drawArc(subCx, subCy, DIAL_R - 2, Graphics.ARC_COUNTER_CLOCKWISE, 35, 145);
-        dc.setColor(0x282828, Graphics.COLOR_TRANSPARENT);
-        dc.drawArc(subCx, subCy, DIAL_R - 2, Graphics.ARC_COUNTER_CLOCKWISE, 215, 325);
-
-        // black face
-        dc.setColor(0x000000, Graphics.COLOR_TRANSPARENT);
-        dc.fillCircle(subCx, subCy, DIAL_R - RIM);
+        SubDial.beveledFace(dc, subCx, subCy, DIAL_R, RIM);
 
         // live battery reading
         var pct = System.getSystemStats().battery.toNumber();
@@ -60,23 +47,14 @@ class BatteryDial {
             }
         }
 
-        // battery glyph sits above the number, with a little breathing room
+        // battery glyph above the number
         drawBatteryGlyph(dc, subCx, subCy - 16, 27, 15, pct, col);
 
-        // percentage, half the size of XTINY via a scalable vector font
-        // (falls back to XTINY on any device that can't supply the face).
-        var font = Graphics.FONT_XTINY;
-        if (Graphics has :getVectorFont) {
-            var size  = (dc.getFontHeight(Graphics.FONT_XTINY) * 3) / 4;
-            var faces = ["RobotoCondensedBold", "RobotoRegular", "RobotoCondensedRegular"];
-            for (var i = 0; i < faces.size(); i += 1) {
-                var vf = Graphics.getVectorFont({:face => faces[i], :size => size});
-                if (vf != null) { font = vf; break; }
-            }
-        }
-
+        // percentage
         dc.setColor(col, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(subCx, subCy + 12, font, pct.toString() + "%",
+        dc.drawText(subCx, subCy + 12,
+                    Fonts.vector(dc, (dc.getFontHeight(Graphics.FONT_XTINY) * 3) / 4),
+                    pct.toString() + "%",
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
     }
 

@@ -35,18 +35,13 @@ class SunTimes {
             set  = computeSun(false, loc[0], loc[1], tz, n);
         }
 
-        // section heading: a sun-behind-cloud, sitting ~2px above the rows.
-        // riseY is the sunrise row center; its glyph reaches ~9px above that,
-        // and the heading's cloud bottom lands ~2px above that.
         drawHeadingIcon(dc, cx, riseY - 23);
 
-        var font = vfont(dc, (dc.getFontHeight(Graphics.FONT_XTINY) * 3) / 5);
+        var font = Fonts.vector(dc, (dc.getFontHeight(Graphics.FONT_XTINY) * 3) / 5);
         drawRow(dc, cx, riseY, true,  fmt(rise), font);
         drawRow(dc, cx, setY,  false, fmt(set),  font);
     }
 
-    // heading glyph: a sun peeking behind an outlined cloud (~15% smaller
-    // than the plain sun it replaced).
     // heading glyph: a sun rising over an ocean horizon — a sun dome on a wide
     // horizon line, with a little water shimmer below.
     private function drawHeadingIcon(dc, hx, hy) {
@@ -80,13 +75,13 @@ class SunTimes {
     private function drawSunGlyph(dc, cx, cy, up) {
         dc.setColor(Palette.PRIMARY, Graphics.COLOR_TRANSPARENT);
         dc.setPenWidth(2);
-        dc.drawLine(cx - 8, cy + 4, cx + 8, cy + 4);                 // horizon
+        dc.drawLine(cx - 8, cy + 4, cx + 8, cy + 4);                        // horizon
         dc.drawArc(cx, cy + 4, 5, Graphics.ARC_COUNTER_CLOCKWISE, 15, 165); // dome
         // little rays over the sun
         dc.drawLine(cx,     cy - 3, cx,     cy - 6);
         dc.drawLine(cx - 5, cy - 1, cx - 7, cy - 3);
         dc.drawLine(cx + 5, cy - 1, cx + 7, cy - 3);
-        // small direction arrow to the left
+        // direction arrow to the left (up = sunrise, down = sunset)
         if (up) {
             dc.drawLine(cx - 12, cy + 3, cx - 12, cy - 3);
             dc.drawLine(cx - 12, cy - 3, cx - 14, cy - 1);
@@ -155,8 +150,8 @@ class SunTimes {
     }
 
     private function normDeg(x) {
-        while (x < 0.0)     { x += 360.0; }
-        while (x >= 360.0)  { x -= 360.0; }
+        while (x < 0.0)    { x += 360.0; }
+        while (x >= 360.0) { x -= 360.0; }
         return x;
     }
 
@@ -177,16 +172,5 @@ class SunTimes {
         if (h12 == 0) { h12 = 12; }
         var ms = (mm < 10) ? "0" + mm.toString() : mm.toString();
         return h12.toString() + ":" + ms + suffix;
-    }
-
-    private function vfont(dc, size) {
-        if (Graphics has :getVectorFont) {
-            var faces = ["RobotoCondensedBold", "RobotoRegular", "RobotoCondensedRegular"];
-            for (var i = 0; i < faces.size(); i += 1) {
-                var vf = Graphics.getVectorFont({:face => faces[i], :size => size});
-                if (vf != null) { return vf; }
-            }
-        }
-        return Graphics.FONT_XTINY;
     }
 }

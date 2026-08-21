@@ -3,35 +3,22 @@ import Toybox.Lang;
 import Toybox.Math;
 import Toybox.Weather;
 
-// WeatherDial — a beveled sub-dial matching the battery bezel, seated between
-// the 2 and 3 o'clock indices. Shows a condition icon, the current temp, and
-// the day's hi/lo. Weather comes from the on-device Toybox.Weather API.
+// WeatherDial — a beveled sub-dial between the 2 and 3 o'clock indices showing
+// a condition icon, the current temp, and the day's hi/lo. Weather comes from
+// the on-device Toybox.Weather API.
 class WeatherDial {
 
     const POS_FRAC = 2.5 / 12.0;  // clock position (between 2 and 3)
     const POS_R    = 110;         // sub-dial center distance from dial center
-    const DIAL_R   = 54;          // sub-dial radius (matches battery dial)
-    const RIM      = 4;           // bezel thickness (matches battery dial)
+    const DIAL_R   = 54;          // sub-dial radius
+    const RIM      = 4;           // bezel thickness
 
     function draw(dc, cx, cy) {
         var p   = Geometry.polar(cx, cy, POS_R, POS_FRAC);
         var wcx = p[0];
         var wcy = p[1];
 
-        // dark-grey bezel base
-        dc.setColor(0x484848, Graphics.COLOR_TRANSPARENT);
-        dc.fillCircle(wcx, wcy, DIAL_R);
-
-        // beveled rim: lighter grey on top, darker on the bottom (top-lit)
-        dc.setPenWidth(RIM);
-        dc.setColor(0x707070, Graphics.COLOR_TRANSPARENT);
-        dc.drawArc(wcx, wcy, DIAL_R - 2, Graphics.ARC_COUNTER_CLOCKWISE, 35, 145);
-        dc.setColor(0x282828, Graphics.COLOR_TRANSPARENT);
-        dc.drawArc(wcx, wcy, DIAL_R - 2, Graphics.ARC_COUNTER_CLOCKWISE, 215, 325);
-
-        // black face
-        dc.setColor(0x000000, Graphics.COLOR_TRANSPARENT);
-        dc.fillCircle(wcx, wcy, DIAL_R - RIM);
+        SubDial.beveledFace(dc, wcx, wcy, DIAL_R, RIM);
 
         // --- weather data ---
         var tempF = null;
@@ -53,15 +40,16 @@ class WeatherDial {
 
         // current temperature (near center)
         dc.setColor(Palette.PRIMARY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(wcx, wcy + 2, vfont(dc, (dc.getFontHeight(Graphics.FONT_XTINY) * 11) / 15),
+        dc.drawText(wcx, wcy + 2,
+                    Fonts.vector(dc, (dc.getFontHeight(Graphics.FONT_XTINY) * 11) / 15),
                     (tempF != null) ? tempF.toString() + "°" : "--°",
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
-        // day lo / hi, monochrome, with wide spacing around the separator
+        // day lo / hi, monochrome, with a gap around the separator
         var loStr = (loF != null) ? loF.toString() + "°" : "--°";
         var hiStr = (hiF != null) ? hiF.toString() + "°" : "--°";
-        var hf    = vfont(dc, dc.getFontHeight(Graphics.FONT_XTINY) / 2);
-        var y2    = wcy + 30;   // hi/lo toward the bottom, clear of the temp
+        var hf    = Fonts.vector(dc, dc.getFontHeight(Graphics.FONT_XTINY) / 2);
+        var y2    = wcy + 30;
         dc.setColor(Palette.TERTIARY, Graphics.COLOR_TRANSPARENT);
         dc.drawText(wcx - 6, y2, hf, loStr,
                     Graphics.TEXT_JUSTIFY_RIGHT | Graphics.TEXT_JUSTIFY_VCENTER);
@@ -149,16 +137,4 @@ class WeatherDial {
     }
 
     private function cToF(c) { return ((c * 9.0 / 5.0) + 32).toNumber(); }
-
-    // scalable vector font at the requested pixel height (falls back to XTINY)
-    private function vfont(dc, size) {
-        if (Graphics has :getVectorFont) {
-            var faces = ["RobotoCondensedBold", "RobotoRegular", "RobotoCondensedRegular"];
-            for (var i = 0; i < faces.size(); i += 1) {
-                var vf = Graphics.getVectorFont({:face => faces[i], :size => size});
-                if (vf != null) { return vf; }
-            }
-        }
-        return Graphics.FONT_XTINY;
-    }
 }
