@@ -24,10 +24,10 @@ class HeartDial {
         var hr    = currentHeartRate();
         var hrStr = (hr != null) ? hr.toString() : "--";
 
-        // red heart glyph, subtle pulse every 3rd second (active mode only —
+        // heart glyph, subtle pulse every 3rd second (active mode only —
         // a watch face can't redraw fast enough for a true heartbeat)
         var pulse = ((System.getClockTime().sec % 3) == 0) ? 12.5 : 12.0;
-        drawHeart(dc, hcx, hcy - 14, pulse, Palette.ACCENT);
+        drawHeart(dc, hcx, hcy - 14, pulse, Palette.PRIMARY);
 
         // BPM number
         dc.setColor(Palette.PRIMARY, Graphics.COLOR_TRANSPARENT);

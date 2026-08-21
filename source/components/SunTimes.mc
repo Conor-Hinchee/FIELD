@@ -6,6 +6,7 @@ import Toybox.Time;
 import Toybox.Time.Gregorian;
 import Toybox.Weather;
 import Toybox.Activity;
+import Toybox.Application;
 
 // SunTimes — sunrise / sunset printed directly on the dial at 6 o'clock (no
 // sub-dial circle). Sits GAP px inside the 6 index, mirroring the battery's
@@ -38,8 +39,8 @@ class SunTimes {
         drawHeadingIcon(dc, cx, riseY - 23);
 
         var font = Fonts.vector(dc, (dc.getFontHeight(Graphics.FONT_XTINY) * 3) / 5);
-        drawRow(dc, cx, riseY, true,  fmt(rise), font);
-        drawRow(dc, cx, setY,  false, fmt(set),  font);
+        drawRow(dc, cx, riseY, true,  fmt(rise), font);   // sunrise (up)
+        drawRow(dc, cx, setY,  false, fmt(set),  font);   // sunset (down)
     }
 
     // heading glyph: a sun rising over an ocean horizon — a sun dome on a wide
@@ -64,33 +65,23 @@ class SunTimes {
         dc.drawLine(hx - 3, hy + 7, hx + 3, hy + 7);
     }
 
-    // one row: sun-on-horizon glyph + time, centered as a pair
+    // one row: a small up/down arrow (sunrise/sunset) + the time
     private function drawRow(dc, cx, y, up, text, font) {
-        drawSunGlyph(dc, cx - 22, y, up);
-        dc.setColor(Palette.TERTIARY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(cx - 10, y, font, text,
-                    Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
-    }
-
-    private function drawSunGlyph(dc, cx, cy, up) {
+        var ax = cx - 22;
         dc.setColor(Palette.PRIMARY, Graphics.COLOR_TRANSPARENT);
         dc.setPenWidth(2);
-        dc.drawLine(cx - 8, cy + 4, cx + 8, cy + 4);                        // horizon
-        dc.drawArc(cx, cy + 4, 5, Graphics.ARC_COUNTER_CLOCKWISE, 15, 165); // dome
-        // little rays over the sun
-        dc.drawLine(cx,     cy - 3, cx,     cy - 6);
-        dc.drawLine(cx - 5, cy - 1, cx - 7, cy - 3);
-        dc.drawLine(cx + 5, cy - 1, cx + 7, cy - 3);
-        // direction arrow to the left (up = sunrise, down = sunset)
         if (up) {
-            dc.drawLine(cx - 12, cy + 3, cx - 12, cy - 3);
-            dc.drawLine(cx - 12, cy - 3, cx - 14, cy - 1);
-            dc.drawLine(cx - 12, cy - 3, cx - 10, cy - 1);
+            dc.drawLine(ax, y + 4, ax, y - 4);          // stem
+            dc.drawLine(ax, y - 4, ax - 3, y - 1);      // left barb
+            dc.drawLine(ax, y - 4, ax + 3, y - 1);      // right barb
         } else {
-            dc.drawLine(cx - 12, cy - 3, cx - 12, cy + 3);
-            dc.drawLine(cx - 12, cy + 3, cx - 14, cy + 1);
-            dc.drawLine(cx - 12, cy + 3, cx - 10, cy + 1);
+            dc.drawLine(ax, y - 4, ax, y + 4);          // stem
+            dc.drawLine(ax, y + 4, ax - 3, y + 1);      // left barb
+            dc.drawLine(ax, y + 4, ax + 3, y + 1);      // right barb
         }
+        dc.setColor(Palette.TERTIARY, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(cx - 12, y, font, text,
+                    Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
     }
 
     // ---- sun-times math (Almanac sunrise equation) ----
@@ -123,8 +114,29 @@ class SunTimes {
         return normHours(localT);
     }
 
+    // Location, best source first:
+    //   1. a live fix (weather station, then last GPS) — remembered to storage
+    //   2. the last remembered fix (survives until the next real one)
+    //   3. a crude timezone estimate (only before the very first fix)
     private function getLocation() {
-        // real location first (weather station, then last GPS fix)
+        var saved = Application.Storage.getValue("loc");
+
+        var live = liveLocation();
+        if (live != null) {
+            // persist only when it actually changes (avoid per-second writes)
+            if (saved == null || saved[0] != live[0] || saved[1] != live[1]) {
+                Application.Storage.setValue("loc", live);
+            }
+            return live;
+        }
+
+        if (saved != null) { return saved; }
+
+        var tz = System.getClockTime().timeZoneOffset / 3600.0;
+        return [ 40.0, tz * 15.0 ];
+    }
+
+    private function liveLocation() {
         if (Toybox has :Weather) {
             var c = Weather.getCurrentConditions();
             if (c != null && c.observationLocationPosition != null) {
@@ -135,11 +147,7 @@ class SunTimes {
         if (act != null && act.currentLocation != null) {
             return act.currentLocation.toDegrees();
         }
-        // fallback until a fix is available: estimate longitude from the
-        // timezone, default a temperate latitude (approximate, self-corrects
-        // once real coordinates arrive).
-        var tz = System.getClockTime().timeZoneOffset / 3600.0;
-        return [ 40.0, tz * 15.0 ];
+        return null;
     }
 
     private function dayOfYear(y, m, d) {

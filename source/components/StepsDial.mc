@@ -2,19 +2,19 @@ import Toybox.Graphics;
 import Toybox.Lang;
 import Toybox.ActivityMonitor;
 
-// StepsDial — a beveled sub-dial between the 4 and 5 o'clock indices (mirrors
-// the heart dial) showing the live step count + distance in miles.
+// StepsDial — a beveled sub-dial below the 12 o'clock index showing the live
+// step count + distance in miles.
 class StepsDial {
 
-    const POS_FRAC = 4.5 / 12.0;  // clock position (between 4 and 5)
-    const POS_R    = 110;         // sub-dial center distance from dial center
-    const DIAL_R   = 40;          // sub-dial radius (mirrors the heart dial)
-    const RIM      = 3;           // bezel thickness
+    const IDX_INNER = 50;   // chapter-ring INSET(2) + LENGTH(48)
+    const GAP       = 15;   // gap below the 12 index
+    const DIAL_R    = 54;   // sub-dial radius (the big 12 o'clock slot)
+    const RIM       = 4;    // bezel thickness
 
     function draw(dc, cx, cy) {
-        var p   = Geometry.polar(cx, cy, POS_R, POS_FRAC);
-        var scx = p[0];
-        var scy = p[1];
+        var topRadius = cx - IDX_INNER - GAP;        // center -> bezel top edge
+        var scx       = cx;
+        var scy       = cy - (topRadius - DIAL_R);   // sub-dial center
 
         SubDial.beveledFace(dc, scx, scy, DIAL_R, RIM);
 
@@ -27,13 +27,13 @@ class StepsDial {
         // step count
         dc.setColor(Palette.PRIMARY, Graphics.COLOR_TRANSPARENT);
         dc.drawText(scx, scy - 6,
-                    Fonts.vector(dc, (dc.getFontHeight(Graphics.FONT_XTINY) * 11) / 20),
+                    Fonts.vector(dc, (dc.getFontHeight(Graphics.FONT_XTINY) * 11) / 15),
                     groupThousands(steps),
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
         // distance in miles
         dc.setColor(Palette.TERTIARY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(scx, scy + 12,
+        dc.drawText(scx, scy + 16,
                     Fonts.vector(dc, dc.getFontHeight(Graphics.FONT_XTINY) / 2),
                     miles.format("%.1f") + " MI",
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);

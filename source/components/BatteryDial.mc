@@ -3,29 +3,26 @@ import Toybox.System;
 import Toybox.Lang;
 import Toybox.Math;
 
-// BatteryDial — a beveled sub-dial below the 12 o'clock index: a segmented
-// level ring, a battery glyph, and the live battery percentage.
-//
-// Geometry is anchored to the chapter ring: the 12 index's inner tip sits at
-// (INSET + LENGTH) = 50 px in from the screen edge, and we drop GAP px below.
+// BatteryDial — a beveled sub-dial between the 4 and 5 o'clock indices: a
+// segmented level ring, a battery glyph, and the live battery percentage.
 class BatteryDial {
 
-    const IDX_INNER = 50;   // chapter-ring INSET(2) + LENGTH(48)
-    const GAP       = 15;   // gap below the 12 index
-    const DIAL_R    = 54;   // sub-dial radius
-    const RIM       = 4;    // bezel thickness
+    const POS_FRAC  = 4.5 / 12.0;  // clock position (between 4 and 5)
+    const POS_R     = 110;         // sub-dial center distance from dial center
+    const DIAL_R    = 40;          // sub-dial radius (the small 4-5 slot)
+    const RIM       = 3;           // bezel thickness
 
     // segmented level gauge around the inner edge
-    const SEG_N     = 30;   // number of segments in the ring
-    const SEG_LEN   = 8;    // segment radial length
-    const SEG_HW    = 2;    // segment half-width (gaps come from N vs width)
-    const SEG_DOT   = 2;    // empty-segment ball radius
-    const SEG_OFF   = 2;    // inset from the black face edge (hug the bezel)
+    const SEG_N     = 24;    // number of segments in the ring
+    const SEG_LEN   = 6;     // segment radial length
+    const SEG_HW    = 1.5;   // segment half-width (gaps come from N vs width)
+    const SEG_DOT   = 1.5;   // empty-segment ball radius
+    const SEG_OFF   = 2;     // inset from the black face edge (hug the bezel)
 
     function draw(dc, cx, cy) {
-        var topRadius = cx - IDX_INNER - GAP;        // center -> bezel top edge
-        var subCx     = cx;
-        var subCy     = cy - (topRadius - DIAL_R);   // sub-dial center
+        var p     = Geometry.polar(cx, cy, POS_R, POS_FRAC);
+        var subCx = p[0];
+        var subCy = p[1];
 
         SubDial.beveledFace(dc, subCx, subCy, DIAL_R, RIM);
 
@@ -48,12 +45,12 @@ class BatteryDial {
         }
 
         // battery glyph above the number
-        drawBatteryGlyph(dc, subCx, subCy - 16, 27, 15, pct, col);
+        drawBatteryGlyph(dc, subCx, subCy - 10, 18, 10, pct, col);
 
         // percentage
         dc.setColor(col, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(subCx, subCy + 12,
-                    Fonts.vector(dc, (dc.getFontHeight(Graphics.FONT_XTINY) * 3) / 4),
+        dc.drawText(subCx, subCy + 8,
+                    Fonts.vector(dc, (dc.getFontHeight(Graphics.FONT_XTINY) * 11) / 20),
                     pct.toString() + "%",
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
     }
@@ -80,7 +77,7 @@ class BatteryDial {
     private function drawEmptyBall(dc, cx, cy, fraction, rOut) {
         var rMid = rOut - (SEG_LEN / 2);
         var p = Geometry.polar(cx, cy, rMid, fraction);
-        dc.setColor(0x505050, Graphics.COLOR_TRANSPARENT);
+        dc.setColor(0xAFAFAF, Graphics.COLOR_TRANSPARENT);   // inverted empty-ball gray
         dc.fillCircle(p[0], p[1], SEG_DOT);
     }
 
