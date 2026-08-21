@@ -1,4 +1,11 @@
 bin/
+gen/
+mir/
+internal-mir/
+*.prg
+*.prg.debug.xml
+*.iq
 *.der
 developer_key
+.write_test
 .DS_Store
