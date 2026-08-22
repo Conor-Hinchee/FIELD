@@ -4,15 +4,17 @@ import Toybox.Time;
 import Toybox.Time.Gregorian;
 
 // DateDial — a beveled sub-dial between the 9 and 10 o'clock indices showing
-// the date stacked three tight lines: FRI / 21 / AUG. The labels share one
-// width and sit ~2 px above/below the day number.
+// the date stacked three lines: FRI / 21 / AUG. The weekday and month letters
+// are tracked (letter-spaced) so each word spans exactly the width of the day
+// number — the left and right edges line up with the "21".
 class DateDial {
 
     const POS_FRAC = 9.5 / 12.0;  // clock position (between 9 and 10)
     const POS_R    = 110;         // sub-dial center distance from dial center
     const DIAL_R   = 54;          // sub-dial radius
     const RIM      = 4;           // bezel thickness
-    const GAP      = 2;           // vertical space between the lines
+    const GAP      = -2;          // vertical space between the lines (tight)
+    const LTR_PCT  = 88;          // label letter size as % of the number width
 
     function draw(dc, cx, cy) {
         var p   = Geometry.polar(cx, cy, POS_R, POS_FRAC);
@@ -22,39 +24,59 @@ class DateDial {
         SubDial.beveledFace(dc, dcx, dcy, DIAL_R, RIM);
 
         var now    = Gregorian.info(Time.now(), Time.FORMAT_SHORT);
-        var center = Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER;
         var dow    = dowName(now.day_of_week);
         var mon    = monName(now.month);
+        var dayStr = now.day.toString();
 
-        // day number (middle) sets the reference width
-        var numF = Fonts.vector(dc, (dc.getFontHeight(Graphics.FONT_XTINY) * 7) / 6);
-        var numH = dc.getFontHeight(numF);
+        var numF    = Fonts.vector(dc, (dc.getFontHeight(Graphics.FONT_XTINY) * 7) / 6);
+        var numH    = dc.getFontHeight(numF);
+        var targetW = dc.getTextWidthInPixels(dayStr, numF);   // width to span
+        var leftX   = dcx - (targetW / 2);                     // shared left edge
 
-        // labels share one width, scaled down a bit from the number
-        var labelW = (dc.getTextWidthInPixels("28", numF) * 82) / 100;
-        var fF = fitToWidth(dc, dow, labelW);
-        var fA = fitToWidth(dc, mon, labelW);
-        var hF = dc.getFontHeight(fF);
-        var hA = dc.getFontHeight(fA);
+        // one letter size for all labels, then tracked to span the number width
+        var lf = Fonts.vector(dc, letterSize(dc, targetW));
+        var hL = dc.getFontHeight(lf);
 
-        // nudge the whole stack down so FRI clears the top of the circle
-        var midY = dcy + 4;
-        var friY = midY - (numH / 2) - GAP - (hF / 2);
-        var augY = midY + (numH / 2) + GAP + (hA / 2);
+        var friY = dcy - (numH / 2) - GAP - (hL / 2);
+        var augY = dcy + (numH / 2) + GAP + (hL / 2);
 
         dc.setColor(Palette.PRIMARY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(dcx, friY, fF, dow, center);
-        dc.drawText(dcx, midY, numF, now.day.toString(), center);
-        dc.drawText(dcx, augY, fA, mon, center);
+        drawTracked(dc, dow, leftX, friY, targetW, lf);
+        dc.drawText(leftX, dcy, numF, dayStr,
+                    Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
+        drawTracked(dc, mon, leftX, augY, targetW, lf);
     }
 
-    // a vector font sized so `text` renders about `targetW` px wide
-    private function fitToWidth(dc, text, targetW) {
+    // a font size (px) for a 3-letter label, based on the widest case so every
+    // day/month renders at the same letter height
+    private function letterSize(dc, targetW) {
         var base = 30;
         var f = Fonts.vector(dc, base);
-        var w = dc.getTextWidthInPixels(text, f);
-        if (w <= 0) { return f; }
-        return Fonts.vector(dc, (base * targetW) / w);
+        var w = dc.getTextWidthInPixels("WWW", f);
+        if (w <= 0) { return base; }
+        return (base * ((targetW * LTR_PCT) / 100)) / w;
+    }
+
+    // draw `text` left-to-right, letter-spaced so it spans exactly targetW
+    private function drawTracked(dc, text, leftX, y, targetW, font) {
+        var vc = Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER;
+        var n  = text.length();
+        if (n <= 1) {
+            dc.drawText(leftX, y, font, text, vc);
+            return;
+        }
+        var sum = 0;
+        var i;
+        for (i = 0; i < n; i += 1) {
+            sum += dc.getTextWidthInPixels(text.substring(i, i + 1), font);
+        }
+        var gap = (targetW - sum) / (n - 1).toFloat();
+        var x = leftX;
+        for (i = 0; i < n; i += 1) {
+            var ch = text.substring(i, i + 1);
+            dc.drawText(x, y, font, ch, vc);
+            x += dc.getTextWidthInPixels(ch, font) + gap;
+        }
     }
 
     private function dowName(dow) {

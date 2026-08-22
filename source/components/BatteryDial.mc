@@ -77,7 +77,7 @@ class BatteryDial {
     private function drawEmptyBall(dc, cx, cy, fraction, rOut) {
         var rMid = rOut - (SEG_LEN / 2);
         var p = Geometry.polar(cx, cy, rMid, fraction);
-        dc.setColor(0xAFAFAF, Graphics.COLOR_TRANSPARENT);   // inverted empty-ball gray
+        dc.setColor(0x505050, Graphics.COLOR_TRANSPARENT);   // dim "off" gray
         dc.fillCircle(p[0], p[1], SEG_DOT);
     }
 

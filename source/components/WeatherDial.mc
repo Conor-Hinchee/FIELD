@@ -49,7 +49,7 @@ class WeatherDial {
         var loStr = (loF != null) ? loF.toString() + "°" : "--°";
         var hiStr = (hiF != null) ? hiF.toString() + "°" : "--°";
         var hf    = Fonts.vector(dc, dc.getFontHeight(Graphics.FONT_XTINY) / 2);
-        var y2    = wcy + 30;
+        var y2    = wcy + 21;
         dc.setColor(Palette.TERTIARY, Graphics.COLOR_TRANSPARENT);
         dc.drawText(wcx - 6, y2, hf, loStr,
                     Graphics.TEXT_JUSTIFY_RIGHT | Graphics.TEXT_JUSTIFY_VCENTER);
@@ -77,8 +77,8 @@ class WeatherDial {
         if (kind.equals("clear")) {
             drawSun(dc, cx, cy, 9);
         } else if (kind.equals("partly")) {
-            drawSun(dc, cx - 8, cy - 5, 7);
-            drawCloud(dc, cx + 3, cy + 2, 25, Palette.PRIMARY);
+            drawSun(dc, cx - 3, cy - 1, 6);
+            drawCloud(dc, cx + 5, cy + 5, 22, Palette.PRIMARY);
         } else if (kind.equals("rain")) {
             drawCloud(dc, cx, cy - 2, 25, Palette.PRIMARY);
             drawDrops(dc, cx, cy + 10);
@@ -113,7 +113,7 @@ class WeatherDial {
         dc.fillCircle(cx + w * 0.30, cy + w * 0.04, w * 0.24);
         dc.fillRectangle(cx - w * 0.45, cy, w * 0.9, w * 0.22);
 
-        dc.setColor(0x000000, Graphics.COLOR_TRANSPARENT);
+        dc.setColor(0x000000, Graphics.COLOR_TRANSPARENT);   // carve against the black face -> outline
         dc.fillCircle(cx - w * 0.26, cy + w * 0.05, w * 0.22 - s);
         dc.fillCircle(cx + w * 0.02, cy - w * 0.12, w * 0.30 - s);
         dc.fillCircle(cx + w * 0.30, cy + w * 0.04, w * 0.24 - s);
