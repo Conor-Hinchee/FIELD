@@ -1,1 +1,6 @@
 project.manifest = manifest.xml
+
+# Compile only the active source tree. Keeps _retired/ (e.g. the old
+# SunTimes sunrise/sunset component, replaced by BodyBattery) out of the
+# build so it no longer emits warnings.
+base.sourcePath = source

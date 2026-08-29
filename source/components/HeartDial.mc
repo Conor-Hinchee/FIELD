@@ -27,18 +27,18 @@ class HeartDial {
         // heart glyph, subtle pulse every 3rd second (active mode only —
         // a watch face can't redraw fast enough for a true heartbeat)
         var pulse = ((System.getClockTime().sec % 3) == 0) ? 12.5 : 12.0;
-        drawHeart(dc, hcx, hcy - 14, pulse, Palette.PRIMARY);
+        drawHeart(dc, hcx, hcy - 22, pulse, Palette.PRIMARY);
 
         // BPM number
         dc.setColor(Palette.PRIMARY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(hcx, hcy + 4,
-                    Fonts.vector(dc, (dc.getFontHeight(Graphics.FONT_XTINY) * 11) / 20),
+        dc.drawText(hcx, hcy + 1,
+                    Fonts.vector(dc, (dc.getFontHeight(Graphics.FONT_XTINY) * 3) / 4),
                     hrStr, Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
         // BPM label
-        dc.setColor(Palette.TERTIARY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(hcx, hcy + 19,
-                    Fonts.vector(dc, (dc.getFontHeight(Graphics.FONT_XTINY) * 3) / 8),
+        dc.setColor(Palette.SECONDARY, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(hcx, hcy + 22,
+                    Fonts.vector(dc, dc.getFontHeight(Graphics.FONT_XTINY) / 2),
                     "BPM", Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
     }
 

@@ -40,7 +40,7 @@ class WeatherDial {
 
         // current temperature (near center)
         dc.setColor(Palette.PRIMARY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(wcx, wcy + 2,
+        dc.drawText(wcx + 4, wcy + 2,
                     Fonts.vector(dc, (dc.getFontHeight(Graphics.FONT_XTINY) * 11) / 15),
                     (tempF != null) ? tempF.toString() + "°" : "--°",
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
@@ -48,14 +48,14 @@ class WeatherDial {
         // day lo / hi, monochrome, with a gap around the separator
         var loStr = (loF != null) ? loF.toString() + "°" : "--°";
         var hiStr = (hiF != null) ? hiF.toString() + "°" : "--°";
-        var hf    = Fonts.vector(dc, dc.getFontHeight(Graphics.FONT_XTINY) / 2);
-        var y2    = wcy + 21;
-        dc.setColor(Palette.TERTIARY, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(wcx - 6, y2, hf, loStr,
+        var hf    = Fonts.vector(dc, (dc.getFontHeight(Graphics.FONT_XTINY) * 3) / 5);
+        var y2    = wcy + 30;
+        dc.setColor(Palette.SECONDARY, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(wcx - 2, y2, hf, loStr,
                     Graphics.TEXT_JUSTIFY_RIGHT | Graphics.TEXT_JUSTIFY_VCENTER);
-        dc.drawText(wcx, y2, hf, "/",
+        dc.drawText(wcx + 3, y2, hf, "/",
                     Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-        dc.drawText(wcx + 6, y2, hf, hiStr,
+        dc.drawText(wcx + 8, y2, hf, hiStr,
                     Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
     }
 
