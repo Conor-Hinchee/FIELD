@@ -5,7 +5,7 @@ import Toybox.ActivityMonitor;
 
 // StepsDial — a beveled sub-dial below the 12 o'clock index showing the live
 // step count + distance in miles, wrapped in a segmented progress ring that
-// fills clockwise from 12 toward the daily step goal (ACCENT when met).
+// fills clockwise from 12 toward the daily step goal.
 class StepsDial {
 
     const IDX_INNER = 50;   // chapter-ring INSET(2) + LENGTH(48)
@@ -37,12 +37,12 @@ class StepsDial {
         var miles  = distCm / 160934.4;
 
         // progress ring: bars fill clockwise from 12, each unreached slot
-        // collapsing to a dim ball. Goal met -> the whole ring flips to ACCENT.
+        // collapsing to a dim ball. Goal met -> the ring simply fills out.
         var progress = steps.toFloat() / goal;
         if (progress > 1.0) { progress = 1.0; }
         var filled = (progress * SEG_N + 0.5).toNumber();
         if (filled > SEG_N) { filled = SEG_N; }
-        var ringCol = (steps >= goal) ? Palette.ACCENT : Palette.PRIMARY;
+        var ringCol = Palette.PRIMARY;
         var segOut  = DIAL_R - RIM - SEG_OFF;
         for (var s = 0; s < SEG_N; s += 1) {
             var f = s.toFloat() / SEG_N;   // 0 at top, increasing clockwise
