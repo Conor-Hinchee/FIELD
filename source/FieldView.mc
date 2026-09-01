@@ -14,7 +14,7 @@ class FieldView extends WatchUi.WatchFace {
     private var mBattery;             // battery sub-dial (12 o'clock)
     private var mWeather;             // weather sub-dial (2–3 o'clock)
     private var mDate;                // date sub-dial (9–10 o'clock)
-    private var mBody;                // body battery (6 o'clock, no circle)
+    private var mIntensity;           // intensity minutes (6 o'clock, no circle)
     private var mHeart;               // heart-rate sub-dial (7–8 o'clock)
     private var mSteps;               // step-count sub-dial (4–5 o'clock)
     private var mPinion;              // cannon pinion (center boss + pin)
@@ -26,7 +26,7 @@ class FieldView extends WatchUi.WatchFace {
         mBattery     = new BatteryDial();
         mWeather     = new WeatherDial();
         mDate        = new DateDial();
-        mBody        = new BodyBattery();
+        mIntensity   = new IntensityMinutes();
         mHeart       = new HeartDial();
         mSteps       = new StepsDial();
         mPinion      = new CannonPinion();
@@ -47,7 +47,7 @@ class FieldView extends WatchUi.WatchFace {
         mBattery.draw(dc, mCx, mCy);
         mWeather.draw(dc, mCx, mCy);
         mDate.draw(dc, mCx, mCy);
-        mBody.draw(dc, mCx, mCy);
+        mIntensity.draw(dc, mCx, mCy);
         mHeart.draw(dc, mCx, mCy);
         mSteps.draw(dc, mCx, mCy);
         mHands.draw(dc, mCx, mCy, mLowPower);

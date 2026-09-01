@@ -30,7 +30,10 @@ class DateDial {
 
         var numF    = Fonts.vector(dc, (dc.getFontHeight(Graphics.FONT_XTINY) * 7) / 6);
         var numH    = dc.getFontHeight(numF);
-        var targetW = dc.getTextWidthInPixels(dayStr, numF);   // width to span
+        // Span a fixed TWO-DIGIT reference width, not the actual day string —
+        // otherwise single-digit days (the 1st–9th) shrink the labels to a
+        // sliver. The day number is centered inside that constant column.
+        var targetW = dc.getTextWidthInPixels("28", numF);
         var leftX   = dcx - (targetW / 2);                     // shared left edge
 
         // one letter size for all labels, then tracked to span the number width
@@ -42,8 +45,8 @@ class DateDial {
 
         dc.setColor(Palette.PRIMARY, Graphics.COLOR_TRANSPARENT);
         drawTracked(dc, dow, leftX, friY, targetW, lf);
-        dc.drawText(leftX, dcy, numF, dayStr,
-                    Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.drawText(dcx, dcy, numF, dayStr,
+                    Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
         drawTracked(dc, mon, leftX, augY, targetW, lf);
     }
 
